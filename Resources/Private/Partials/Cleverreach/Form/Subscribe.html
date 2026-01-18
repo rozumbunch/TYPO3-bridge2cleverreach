@@ -1,0 +1,40 @@
+<f:form action="subscribe" controller="Cleverreach" objectName="cleverreachapi"
+        pageUid="{data.pid}" pluginName="subscribeform"
+        hiddenFieldClassName="form-floating hidden-fields"
+>
+    <div class="form-floating col">
+        <f:form.textfield property="newsletter-form-name" id="newsletter-form-name" class="form-control"
+                          placeholder=" " required="{f:if(condition: '{settings.onlyTechRequirement}!=1', then: 'true', else: 'false')}" />
+        <label for="newsletter-form-name"><f:translate key="form.label.firstname" extensionName="bridge2cleverreach" /> {f:if(condition: '{settings.onlyTechRequirement}!=1', then: '*')}</label>
+    </div>
+
+    <div class="form-floating col">
+        <f:form.textfield property="newsletter-form-surname" id="newsletter-form-surname"
+                          class="form-control" placeholder=" " required="{f:if(condition: '{settings.onlyTechRequirement}!=1', then: 'true', else: 'false')}"/>
+        <label for="newsletter-form-surname"><f:translate key="form.label.lastname" extensionName="bridge2cleverreach" /> {f:if(condition: '{settings.onlyTechRequirement}!=1', then: '*')}</label>
+    </div>
+
+    <div class="form-floating">
+        <f:form.textfield property="newsletter-form-email" id="newsletter-form-email" class="form-control"
+                          placeholder=" " required="true" type="email"/>
+        <label for="newsletter-form-email"><f:translate key="form.label.email" extensionName="bridge2cleverreach" /> *</label>
+    </div>
+
+    <f:if condition="{settings.showPrivacyCheckbox} == 1">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="1" id="newsletter-form-privacy-checkbox" required>
+            <label class="form-check-label" for="newsletter-form-privacy-checkbox">
+                <f:translate key="privacyCheckbox.text" extensionName="bridge2cleverreach" />
+                <f:if condition="{settings.privacyCheckbox.linkToPrivacyPolicyPid}">
+                    <f:link.page pageUid="{settings.privacyCheckbox.linkToPrivacyPolicyPid}" target="_blank">
+                        <f:translate key="privacyCheckbox.linkToPrivacyPolicy" extensionName="bridge2cleverreach" />
+                    </f:link.page>
+                </f:if>
+            </label>
+        </div>
+    </f:if>
+
+
+    <f:form.button class="btn btn--main"><f:translate key="form.button.submit" extensionName="bridge2cleverreach" /></f:form.button>
+
+</f:form>

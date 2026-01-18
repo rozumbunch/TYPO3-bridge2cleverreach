@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2024-01-01T00:00:00Z" product-name="bridge2cleverreach">
+		<header />
+		<body>
+			<trans-unit id="error.noData">
+				<source>Error: No Data</source>
+			</trans-unit>
+			<trans-unit id="error.configuration">
+				<source>Configuration Error</source>
+			</trans-unit>
+			<trans-unit id="error.authorization">
+				<source>Authorization error, check your authorization data</source>
+			</trans-unit>
+			<trans-unit id="success.subscribe">
+				<source>Please check your email inbox and confirm your registration.</source>
+			</trans-unit>
+			<trans-unit id="success.unsubscribe">
+				<source>You have successfully unsubscribed</source>
+			</trans-unit>
+			<trans-unit id="form.label.firstname">
+				<source>First Name</source>
+			</trans-unit>
+			<trans-unit id="form.label.lastname">
+				<source>Last Name</source>
+			</trans-unit>
+			<trans-unit id="form.label.email">
+				<source>Email Address</source>
+			</trans-unit>
+			<trans-unit id="form.button.submit">
+				<source>Submit</source>
+			</trans-unit>
+			<trans-unit id="form.button.unsubscribe">
+				<source>Unsubscribe</source>
+			</trans-unit>
+			<trans-unit id="privacyCheckbox.text">
+				<source>Yes, I would like to receive the newsletter(s) I have selected and agree that my data will be stored electronically for this purpose. I can revoke my consent at any time.</source>
+			</trans-unit>
+		<trans-unit id="privacyCheckbox.linkToPrivacyPolicy">
+			<source>Further information on data protection.</source>
+		</trans-unit>
+		<trans-unit id="api.error.postOnly">
+			<source>Only POST requests are allowed</source>
+		</trans-unit>
+		<trans-unit id="api.error.siteConfigNotFound">
+			<source>Site configuration not found</source>
+		</trans-unit>
+		<trans-unit id="api.error.general">
+			<source>An error occurred: %s</source>
+		</trans-unit>
+		<trans-unit id="api.error.actionRequired">
+			<source>Parameter "action" is required. Possible values: subscribe, unsubscribe</source>
+		</trans-unit>
+		<trans-unit id="api.error.invalidAction">
+			<source>Invalid action. Possible values: subscribe, unsubscribe, get</source>
+		</trans-unit>
+		<trans-unit id="api.error.emailRequired">
+			<source>Parameter "email" is required</source>
+		</trans-unit>
+		<trans-unit id="api.error.invalidEmail">
+			<source>Invalid email format</source>
+		</trans-unit>
+		<trans-unit id="api.error.nameMustBeString">
+			<source>Parameter "name" must be a string</source>
+		</trans-unit>
+		<trans-unit id="api.error.surnameMustBeString">
+			<source>Parameter "surname" must be a string</source>
+		</trans-unit>
+		<trans-unit id="api.error.configIncomplete">
+			<source>Cleverreach configuration incomplete: clientId and clientSecret are required</source>
+		</trans-unit>
+		<trans-unit id="api.error.configMappingOrDefault">
+			<source>Cleverreach configuration incomplete: Either cleverreachGroupMapping or creverreachGroup and doubleOptInMailId must be configured</source>
+		</trans-unit>
+		<trans-unit id="api.error.configGroupRequired">
+			<source>Cleverreach configuration incomplete: creverreachGroup is required for unsubscribe</source>
+		</trans-unit>
+		<trans-unit id="api.error.authorizationFailed">
+			<source>Authorization failed</source>
+		</trans-unit>
+		<trans-unit id="api.error.noNewsletterGroup">
+			<source>No newsletter group specified and no default group configured</source>
+		</trans-unit>
+		<trans-unit id="api.error.groupConfigNotFound">
+			<source>No configuration found for newsletter group '%s'</source>
+		</trans-unit>
+		<trans-unit id="api.error.groupError">
+			<source>Error in group '%s': %s</source>
+		</trans-unit>
+		<trans-unit id="api.error.unknownError">
+			<source>Unknown error</source>
+		</trans-unit>
+		<trans-unit id="api.error.doiEmailFailed">
+			<source>Error sending Double-Opt-In email for group '%s': %s</source>
+		</trans-unit>
+		<trans-unit id="api.error.subscriptionFailed">
+			<source>Subscription failed: %s</source>
+		</trans-unit>
+		<trans-unit id="api.success.subscriptionPartial">
+			<source>Subscription partially successful (%d of %d groups). Errors: %s</source>
+		</trans-unit>
+		<trans-unit id="api.success.subscription">
+			<source>Newsletter subscription successful. Please confirm your email address.</source>
+		</trans-unit>
+		<trans-unit id="api.success.unsubscription">
+			<source>Newsletter unsubscription successful</source>
+		</trans-unit>
+		<trans-unit id="api.error.unsubscriptionFailed">
+			<source>Error during unsubscription</source>
+		</trans-unit>
+		<trans-unit id="api.success.subscriberFound">
+			<source>Subscriber found</source>
+		</trans-unit>
+		<trans-unit id="api.error.subscriberNotFound">
+			<source>Subscriber not found</source>
+		</trans-unit>
+		<trans-unit id="api.error.unexpectedResponse">
+			<source>Unexpected response from ApiManager</source>
+		</trans-unit>
+		<trans-unit id="api.error.getSubscriberFailed">
+			<source>Error retrieving subscriber: %s</source>
+		</trans-unit>
+		</body>
+	</file>
+</xliff>
+

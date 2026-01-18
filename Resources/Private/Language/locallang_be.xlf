@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2020-05-08T18:27:36Z" product-name="bridge2cleverreach">
+		<header />
+		<body>
+			<trans-unit id="header">
+				<source>Header</source>
+			</trans-unit>
+			<trans-unit id="teaser">
+				<source>Subheader</source>
+			</trans-unit>
+            <trans-unit id="onlyTechRequirement">
+                <source>Only the technically required fields are required (Email address).</source>
+            </trans-unit>
+            <trans-unit id="onlyTechRequirement.description">
+                <source>If not selected, all fields are required.</source>
+            </trans-unit>
+            <trans-unit id="flexform.sheetTitle">
+                <source>Configuration</source>
+            </trans-unit>
+            <trans-unit id="flexform.creverreachGroup.label">
+                <source>List ID</source>	
+            </trans-unit>
+            <trans-unit id="flexform.creverreachGroup.description">
+                <source>The ID of the recipient list of the respective account</source>
+            </trans-unit>
+            <trans-unit id="flexform.doubleOptInMailId.label">
+                <source>Form ID (Double-Opt-In/Out)</source>
+            </trans-unit>
+            <trans-unit id="flexform.doubleOptInMailId.description">
+                <source>The ID of the form for newsletter subscription/unsubscription</source>
+            </trans-unit>
+            <trans-unit id="flexform.showPrivacyCheckbox.label">
+                <source>Show Privacy Checkbox</source>
+            </trans-unit>
+            <trans-unit id="flexform.showPrivacyCheckbox.description">
+                <source>If enabled, a privacy checkbox will be displayed in the frontend form</source>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>

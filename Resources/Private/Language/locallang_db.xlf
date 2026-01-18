@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2020-05-08T18:27:36Z" product-name="bridge2cleverreach">
+		<header />
+		<body>
+		<trans-unit id="tx_bridge2cleverreach_subscribeform.name">
+			<source>Subscribeform</source>
+		</trans-unit>
+		<trans-unit id="tx_bridge2cleverreach_subscribeform.description">
+			<source>Subscribeform</source>
+		</trans-unit>
+		<trans-unit id="tx_bridge2cleverreach_unsubscribeform.name">
+			<source>Unsubscribeform</source>
+		</trans-unit>
+		<trans-unit id="tx_bridge2cleverreach_unsubscribeform.description">
+			<source>Unsubscribeform</source>
+		</trans-unit>
+		<trans-unit id="site.tab.cleverreach">
+			<source>Cleverreach</source>
+		</trans-unit>
+		<trans-unit id="site.cleverreachClientId.label">
+			<source>Client Id</source>
+		</trans-unit>
+		<trans-unit id="site.cleverreachClientSecret.label">
+			<source>Client Secret</source>
+		</trans-unit>
+		<trans-unit id="site.cleverreachGroup.label">
+			<source>List ID</source>
+		</trans-unit>
+		<trans-unit id="site.cleverreachGroup.description">
+			<source>The ID of the recipient list of the respective account</source>
+		</trans-unit>
+		<trans-unit id="site.cleverreachDoubleOptInMailId.label">
+			<source>Form ID (Double-Opt-In/Out)</source>
+		</trans-unit>
+		<trans-unit id="site.cleverreachDoubleOptInMailId.description">
+			<source>The ID of the form for newsletter subscription/unsubscription</source>
+		</trans-unit>
+		<trans-unit id="site.cleverreachGroupMapping.label">
+			<source>Newsletter Group Mapping (JSON)</source>
+		</trans-unit>
+		<trans-unit id="site.cleverreachGroupMapping.description">
+			<source>Mapping between newsletter names (from form parameter) and Cleverreach group/form IDs. Format: {"NEWSLETTER": {"groupId": 123, "formId": 456}, "NOTICE": {"groupId": 789, "formId": 101}}</source>
+		</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,27 @@
+{
+  "name": "rozumbunch/bridge2cleverreach",
+  "type": "typo3-cms-extension",
+  "description": "API for Newsletter with Cleverreach",
+  "keywords": ["typo3","newsletter","cleverreach","api"],
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "authors": [
+    {
+      "name": "Rozumbunch"
+    }
+  ],
+  "require": {
+    "typo3/cms-core": "^12.4 || ^13.0 || ^14.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rozumbunch\\Bridge2Cleverreach\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "bridge2cleverreach"
+    }
+  }
+}

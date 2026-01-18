@@ -1,0 +1,21 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="newsletter subscribe-form">
+    <f:if condition="{response}">
+        <f:then>
+			<div class="newsletter__content">
+				<strong class="message">{response.message}</strong>
+			</div>
+        </f:then>
+        <f:else>
+            <f:render partial="Cleverreach/Header" arguments="{data: data}"/>
+
+            <f:render partial="Cleverreach/Form/Subscribe" arguments="{data: data}"/>
+
+        </f:else>
+    </f:if>
+</div>
+
+</html>
+

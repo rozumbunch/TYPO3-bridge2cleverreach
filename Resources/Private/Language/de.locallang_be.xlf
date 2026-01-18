@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2020-05-08T18:27:36Z" product-name="bridge2cleverreach">
+		<header />
+		<body>
+			<trans-unit id="header">
+				<source>Header</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="teaser">
+				<source>Subheader</source>
+				<target>Untertitel</target>
+			</trans-unit>
+            <trans-unit id="onlyTechRequirement">
+                <source>Only the technically required fields are required (Email address).</source>
+                <target>Nur die technisch erforderlichen Felder sind Pflicht (E‑Mail-Adresse).</target>
+            </trans-unit>
+            <trans-unit id="onlyTechRequirement.description">
+                <source>If not selected, all fields are required.</source>
+                <target>Wenn nicht ausgewählt, sind alle Felder Pflicht.</target>
+            </trans-unit>
+            <trans-unit id="flexform.sheetTitle">
+                <source>Configuration</source>
+                <target>Konfiguration Bereich</target>
+            </trans-unit>
+            <trans-unit id="flexform.creverreachGroup.label">
+                <source>List ID</source>
+                <target>List ID</target>
+            </trans-unit>
+            <trans-unit id="flexform.creverreachGroup.description">
+                <source>The ID of the recipient list of the respective account</source>
+                <target>Die ID der Empfängerliste des jeweiligen Accounts</target>
+            </trans-unit>
+            <trans-unit id="flexform.doubleOptInMailId.label">
+                <source>Form ID (Double-Opt-In/Out)</source>
+                <target>Formular ID (Double-Opt-In/Out)</target>
+            </trans-unit>
+            <trans-unit id="flexform.doubleOptInMailId.description">
+                <source>The ID of the form for newsletter subscription/unsubscription</source>
+                <target>Die ID des Formulares für die Newsletter An-/Abmeldung</target>
+            </trans-unit>
+            <trans-unit id="flexform.showPrivacyCheckbox.label">
+                <source>Show Privacy Checkbox</source>
+                <target>Datenschutz-Checkbox anzeigen</target>
+            </trans-unit>
+            <trans-unit id="flexform.showPrivacyCheckbox.description">
+                <source>If enabled, a privacy checkbox will be displayed in the frontend form</source>
+                <target>Wenn aktiviert, wird im Frontend-Formular eine Datenschutz-Checkbox angezeigt</target>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>
+

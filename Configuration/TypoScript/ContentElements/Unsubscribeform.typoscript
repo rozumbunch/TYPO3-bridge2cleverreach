@@ -1,0 +1,14 @@
+tt_content.unsubscribeform = COA
+tt_content.unsubscribeform {
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = Bridge2Cleverreach
+        vendorName = Rozumbunch
+        pluginName = Unsubscribeform
+        controller = Cleverreach
+        
+        view < plugin.tx_bridge2cleverreach_unsubscribeform.view
+    }
+}
+

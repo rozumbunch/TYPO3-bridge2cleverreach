@@ -1,0 +1,38 @@
+tt_content.subscribeform = COA
+tt_content.subscribeform {
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = Bridge2Cleverreach
+        vendorName = Rozumbunch
+        pluginName = Subscribeform
+        controller = Cleverreach
+        
+        view < plugin.tx_bridge2cleverreach_subscribeform.view
+        settings < plugin.tx_bridge2cleverreach_subscribeform.settings
+    }
+}
+
+
+/*
+tt_content.subscribeform =< lib.contentElementWithHeader
+tt_content.subscribeform {
+    fields {
+        content {
+            fields {
+                data = USER
+                data {
+                    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                    extensionName = Bridge2Cleverreach
+                    vendorName = Rozumbunch
+                    pluginName = Subscribeform
+                    controller = Cleverreach
+                    
+                    view < plugin.tx_bridge2cleverreach_subscribeform.view
+                    settings < plugin.tx_bridge2cleverreach_subscribeform.settings
+                }
+            }
+        }
+    }
+}
+*/

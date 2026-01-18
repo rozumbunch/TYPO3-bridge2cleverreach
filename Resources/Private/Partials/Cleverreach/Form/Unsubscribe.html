@@ -1,0 +1,13 @@
+<f:form action="unsubscribe" controller="Cleverreach" objectName="cleverreachapi"
+        pageUid="{data.pid}" pluginName="unsubscribeform"
+        hiddenFieldClassName="form-floating hidden-fields"
+>
+    <div class="form-floating">
+        <f:form.textfield property="newsletter-form-email" id="newsletter-form-email" class="form-control"
+                          placeholder=" " required="true" type="email"/>
+        <label for="newsletter-form-email"><f:translate key="form.label.email" extensionName="bridge2cleverreach" /> *</label>
+    </div>
+
+    <f:form.button class="btn btn--main"><f:translate key="form.button.unsubscribe" extensionName="bridge2cleverreach" /></f:form.button>
+
+</f:form>

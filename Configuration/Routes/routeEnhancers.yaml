@@ -1,0 +1,46 @@
+---
+routeEnhancers:
+  Bridge2CleverreachSubscribeformDe:
+    type: Extbase
+    extension: Bridge2Cleverreach
+    plugin: Subscribeform
+    limitToLanguages:
+      - 0
+    limitToPages:
+      - 29
+    routes:
+      - routePath: '/anmeldung-ergebnis'
+        _controller: 'Cleverreach::subscribe'
+    defaultController: 'Cleverreach::subscribe'
+  Bridge2CleverreachSubscribeformEn:
+    type: Extbase
+    extension: Bridge2Cleverreach
+    plugin: Subscribeform
+    limitToLanguages:
+      - 1
+    limitToPages:
+      - 31
+    routes:
+      - routePath: '/subscribe-result'
+        _controller: 'Cleverreach::subscribe'
+    defaultController: 'Cleverreach::subscribe'
+  Bridge2CleverreachUnsubscribeformDe:
+    type: Extbase
+    extension: Bridge2Cleverreach
+    plugin: Unsubscribeform
+    limitToLanguages:
+      - 0
+    routes:
+      - routePath: '/abmelden-ergebnis'
+        _controller: 'Cleverreach::unsubscribe'
+    defaultController: 'Cleverreach::unsubscribe'
+  Bridge2CleverreachUnsubscribeformEn:
+    type: Extbase
+    extension: Bridge2Cleverreach
+    plugin: Unsubscribeform
+    limitToLanguages:
+      - 1
+    routes:
+      - routePath: '/unsubscribe-result'
+        _controller: 'Cleverreach::unsubscribe'
+    defaultController: 'Cleverreach::unsubscribe'

@@ -1,0 +1,8 @@
+categories:
+  bridge2cleverreach:
+  
+settings:
+  plugin.tx_bridge2cleverreach_subscribeform.settings.privacyCheckbox.linkToPrivacyPolicyPid:
+    default: 0
+    type: page
+    category: bridge2cleverreach

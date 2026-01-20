@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+	<file source-language="en" datatype="plaintext" date="2026-01-20T12:00:00Z" product-name="bridge2cleverreach">
+		<header/>
+		<body>
+			<trans-unit id="label">
+				<source>Bridge to cleverreach</source>
+			</trans-unit>
+			<trans-unit id="categories.bridge2cleverreach">
+				<source>Bridge to cleverreach</source>
+			</trans-unit>
+			<trans-unit id="settings.plugin.tx_bridge2cleverreach_subscribeform.settings.privacyCheckbox.linkToPrivacyPolicyPid">
+				<source>Privacy Policy PID</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Rozumbunch\Bridge2Cleverreach\Api\ApiManager;
+use Rozumbunch\Bridge2Cleverreach\Utility\CleverReachGroupMapper;
 use TYPO3\CMS\Core\Http\JsonResponse;
 use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Site\Entity\Site;
@@ -174,7 +175,7 @@ class RequestMiddleware implements MiddlewareInterface
         }
 
         if ($action === 'subscribe') {
-            $hasMapping = !empty($settings['groupMapping']);
+            $hasMapping = !empty($settings['groups']);
             $hasDefaultGroup = !empty($settings['creverreachGroup']) && !empty($settings['doubleOptInMailId']);
 
             if (!$hasMapping && !$hasDefaultGroup) {
@@ -248,8 +249,8 @@ class RequestMiddleware implements MiddlewareInterface
         $newsletterParam = $body['newsletter'] ?? '';
         $newsletterGroups = $this->parseNewsletterParameter($newsletterParam);
 
-        // Mapping aus Settings laden
-        $groupMapping = $this->parseGroupMapping($settings['groupMapping'] ?? '');
+        // Mapping aus den site-konfigurierten CleverReach-Gruppen laden
+        $groupMapping = $settings['groups'] ?? [];
 
         // Wenn kein Mapping vorhanden, Fallback auf Standard-Gruppe
         if (empty($groupMapping) && !empty($settings['creverreachGroup'])) {
@@ -288,7 +289,7 @@ class RequestMiddleware implements MiddlewareInterface
             }
 
             $groupId = (int)$mapping['groupId'];
-            $formId = (int)$mapping['formId'];
+            $formId = (string)$mapping['formId'];
 
             // Subscriber erstellen
             $subscribeResult = $this->apiManager->createSubscriber(
@@ -421,7 +422,9 @@ class RequestMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Holt die Settings aus der Site-Konfiguration
+     * Retrieves the CleverReach credentials from the "CleverReach" tab on
+     * the site configuration record (cleverreachClientId, ... columns from
+     * Configuration/SiteConfiguration/Overrides/sites.php).
      *
      * @param Site $site
      * @return array<string, mixed>
@@ -429,14 +432,25 @@ class RequestMiddleware implements MiddlewareInterface
     private function getSettings(Site $site): array
     {
         $siteConfiguration = $site->getConfiguration();
-
-        return [
-            'clientId' => $siteConfiguration['cleverreachClientId'] ?? '',
-            'clientSecret' => $siteConfiguration['cleverreachClientSecret'] ?? '',
-            'creverreachGroup' => $siteConfiguration['cleverreachGroup'] ?? '',
-            'doubleOptInMailId' => $siteConfiguration['cleverreachDoubleOptInMailId'] ?? '',
-            'groupMapping' => $siteConfiguration['cleverreachGroupMapping'] ?? '',
+        $settings = [
+            'clientId' => (string)($siteConfiguration['cleverreachClientId'] ?? ''),
+            'clientSecret' => (string)($siteConfiguration['cleverreachClientSecret'] ?? ''),
+            'creverreachGroup' => (string)($siteConfiguration['cleverreachGroup'] ?? ''),
+            'doubleOptInMailId' => (string)($siteConfiguration['cleverreachDoubleOptInMailId'] ?? ''),
         ];
+
+        $settings['groups'] = $this->getGroupMapping($siteConfiguration);
+
+        return $settings;
+    }
+
+    /**
+     * @param array<string, mixed> $siteConfiguration
+     * @return array<string, array{groupId: int, formId: string}>
+     */
+    private function getGroupMapping(array $siteConfiguration): array
+    {
+        return CleverReachGroupMapper::mapFromSiteConfiguration($siteConfiguration);
     }
 
     /**
@@ -462,26 +476,5 @@ class RequestMiddleware implements MiddlewareInterface
         }
 
         return $groups;
-    }
-
-    /**
-     * Parst das JSON-Mapping aus der Site-Konfiguration
-     *
-     * @param string $mappingJson
-     * @return array<string, array<string, mixed>>
-     */
-    private function parseGroupMapping(string $mappingJson): array
-    {
-        if (empty($mappingJson)) {
-            return [];
-        }
-
-        $mapping = json_decode($mappingJson, true);
-
-        if (json_last_error() !== JSON_ERROR_NONE || !is_array($mapping)) {
-            return [];
-        }
-
-        return $mapping;
     }
 }

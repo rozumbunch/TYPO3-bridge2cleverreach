@@ -7,11 +7,6 @@ plugin.tx_bridge2cleverreach_subscribeform {
     layoutRootPaths.0 = EXT:bridge2cleverreach/Resources/Private/Layouts/
     layoutRootPaths.1 = {$plugin.tx_bridge2cleverreach_subscribeform.view.layoutRootPath}
   }
-  settings {
-      privacyCheckbox {
-        linkToPrivacyPolicyPid = {$plugin.tx_bridge2cleverreach_subscribeform.settings.privacyCheckbox.linkToPrivacyPolicyPid}
-      }
-  }
 }
 
 plugin.tx_bridge2cleverreach_unsubscribeform {
@@ -38,5 +33,3 @@ page.includeCSS {
 #### CONTENT ELEMENTS ####
 ##########################
 @import 'EXT:bridge2cleverreach/Configuration/TypoScript/ContentElements/'
-
-

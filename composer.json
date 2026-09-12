@@ -1,7 +1,7 @@
 {
   "name": "rozumbunch/bridge2cleverreach",
   "type": "typo3-cms-extension",
-  "description": "API for Newsletter with Cleverreach",
+  "description": "API for Newsletter with CleverReach",
   "keywords": ["typo3","newsletter","cleverreach","api"],
   "license": [
     "GPL-2.0-or-later"

@@ -7,7 +7,7 @@
 				<source>Header</source>
 			</trans-unit>
 			<trans-unit id="teaser">
-				<source>Subheader</source>
+				<source>Teaser</source>
 			</trans-unit>
             <trans-unit id="onlyTechRequirement">
                 <source>Only the technically required fields are required (Email address).</source>
@@ -18,8 +18,20 @@
             <trans-unit id="flexform.sheetTitle">
                 <source>Configuration</source>
             </trans-unit>
+            <trans-unit id="flexform.newsletterGroups.label">
+                <source>Newsletter groups</source>
+            </trans-unit>
+            <trans-unit id="flexform.newsletterGroups.description">
+                <source>Select which CleverReach groups this form subscribes to. If none are selected, the default group below is used.</source>
+            </trans-unit>
+            <trans-unit id="flexform.newsletterGroups.unsubscribe.description">
+                <source>Select which CleverReach groups this form unsubscribes from. If none are selected, the visitor is removed from all configured groups.</source>
+            </trans-unit>
+            <trans-unit id="flexform.newsletterGroups.default">
+                <source>Default (site configuration)</source>
+            </trans-unit>
             <trans-unit id="flexform.creverreachGroup.label">
-                <source>List ID</source>	
+                <source>List ID</source>
             </trans-unit>
             <trans-unit id="flexform.creverreachGroup.description">
                 <source>The ID of the recipient list of the respective account</source>
@@ -35,6 +47,21 @@
             </trans-unit>
             <trans-unit id="flexform.showPrivacyCheckbox.description">
                 <source>If enabled, a privacy checkbox will be displayed in the frontend form</source>
+            </trans-unit>
+            <trans-unit id="flexform.privacyCheckboxLinkToPrivacyPolicyPid.label">
+                <source>Privacy policy page</source>
+            </trans-unit>
+            <trans-unit id="flexform.privacyCheckboxLinkToPrivacyPolicyPid.description">
+                <source>Page linked from the privacy checkbox text on the subscribe form</source>
+            </trans-unit>
+            <trans-unit id="settings.category.cleverreach">
+                <source>CleverReach</source>
+            </trans-unit>
+            <trans-unit id="settings.includeCss.label">
+                <source>Include default CSS</source>
+            </trans-unit>
+            <trans-unit id="settings.includeCss.description">
+                <source>Include EXT:bridge2cleverreach/Resources/Public/Css/newsletter.css via page.includeCSS.bridge2cleverreach. Disable this if the site provides its own styles.</source>
             </trans-unit>
 		</body>
 	</file>

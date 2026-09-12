@@ -31,6 +31,17 @@ $GLOBALS['SiteConfiguration']['site']['columns']['cleverreachGroup'] = [
     ],
 ];
 
+$GLOBALS['SiteConfiguration']['site']['columns']['cleverreachGroupName'] = [
+    'label' => 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:site.cleverreachGroupName.label',
+    'description' => 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:site.cleverreachGroupName.description',
+    'config' => [
+        'type' => 'input',
+        'size' => '30',
+        'default' => '',
+        'eval' => 'trim',
+    ],
+];
+
 $GLOBALS['SiteConfiguration']['site']['columns']['cleverreachDoubleOptInMailId'] = [
     'label' => 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:site.cleverreachDoubleOptInMailId.label',
     'description' => 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:site.cleverreachDoubleOptInMailId.description',
@@ -42,17 +53,5 @@ $GLOBALS['SiteConfiguration']['site']['columns']['cleverreachDoubleOptInMailId']
     ],
 ];
 
-$GLOBALS['SiteConfiguration']['site']['columns']['cleverreachGroupMapping'] = [
-    'label' => 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:site.cleverreachGroupMapping.label',
-    'description' => 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:site.cleverreachGroupMapping.description',
-    'config' => [
-        'type' => 'text',
-        'rows' => 10,
-        'default' => '',
-        'eval' => 'trim',
-        'placeholder' => '{"NEWSLETTER": {"groupId": 123, "formId": 456}, "NOTICE": {"groupId": 789, "formId": 101}}',
-    ],
-];
-
 $GLOBALS['SiteConfiguration']['site']['types']['0']['showitem']
-    .= ',--div--;LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:site.tab.cleverreach,cleverreachClientId,cleverreachClientSecret,cleverreachGroup,cleverreachDoubleOptInMailId,cleverreachGroupMapping';
+    .= ',--div--;LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:site.tab.cleverreach,cleverreachClientId,cleverreachClientSecret,cleverreachGroup,cleverreachGroupName,cleverreachDoubleOptInMailId';

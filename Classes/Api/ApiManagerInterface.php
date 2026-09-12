@@ -52,25 +52,25 @@ interface ApiManagerInterface
      * Triggers the Double-Opt-In email for a subscriber.
      *
      * @param string $email
-     * @param int $formId
+     * @param string $formId
      * @param array<string, mixed> $options
      * @param string $token
      *
      * @return array<string, mixed>
      */
-    public function triggerDoubleOptInEmail(string $email, int $formId, array $options, string $token);
+    public function triggerDoubleOptInEmail(string $email, string $formId, array $options, string $token);
 
     /**
      * Triggers the Double-Opt-Out email for a subscriber.
      *
      * @param string $email
-     * @param int $formId
+     * @param string $formId
      * @param array<string, mixed> $options
      * @param string $token
      *
      * @return mixed
      */
-    public function triggerDoubleOptOutEmail(string $email, int $formId, array $options, string $token);
+    public function triggerDoubleOptOutEmail(string $email, string $formId, array $options, string $token);
 
     /**
      * Deletes a subscriber.

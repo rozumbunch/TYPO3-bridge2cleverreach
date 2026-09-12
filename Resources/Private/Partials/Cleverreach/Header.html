@@ -26,6 +26,11 @@
     <f:if condition="{data.subheader}">
         <p>{data.subheader}</p>
     </f:if>
+    <f:if condition="{data.bodytext}">
+        <div class="newsletter-header__teaser">
+            <f:format.html>{data.bodytext}</f:format.html>
+        </div>
+    </f:if>
 </div>
 
 </html>

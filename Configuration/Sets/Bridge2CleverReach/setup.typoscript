@@ -1,0 +1,22 @@
+plugin.tx_bridge2cleverreach_subscribeform {
+    view {
+        templateRootPaths.0 = EXT:bridge2cleverreach/Resources/Private/Templates/
+        partialRootPaths.0 = EXT:bridge2cleverreach/Resources/Private/Partials/
+        layoutRootPaths.0 = EXT:bridge2cleverreach/Resources/Private/Layouts/
+    }
+}
+
+plugin.tx_bridge2cleverreach_unsubscribeform {
+    view {
+        templateRootPaths.0 = EXT:bridge2cleverreach/Resources/Private/Templates/
+        partialRootPaths.0 = EXT:bridge2cleverreach/Resources/Private/Partials/
+        layoutRootPaths.0 = EXT:bridge2cleverreach/Resources/Private/Layouts/
+    }
+}
+
+[{$bridge2cleverreach.includeCss}]
+page.includeCSS.bridge2cleverreach = EXT:bridge2cleverreach/Resources/Public/Css/newsletter.css
+page.includeCSS.bridge2cleverreach.media = all
+[end]
+
+@import 'EXT:bridge2cleverreach/Configuration/TypoScript/ContentElements/'

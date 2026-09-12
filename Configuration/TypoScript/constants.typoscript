@@ -4,13 +4,6 @@ plugin.tx_bridge2cleverreach_subscribeform {
     partialRootPath = EXT:bridge2cleverreach/Resources/Private/Partials/
     layoutRootPath = EXT:bridge2cleverreach/Resources/Private/Layouts/
   }
-
-  settings {
-    privacyCheckbox {
-      # cat=plugin.tx_bridge2cleverreach_subscribeform/a; type=integer; label=Link to Privacy Policy Pid
-      linkToPrivacyPolicyPid = 1
-    }
-  }
 }
 
 plugin.tx_bridge2cleverreach_unsubscribeform {

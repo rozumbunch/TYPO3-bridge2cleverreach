@@ -32,28 +32,28 @@
 			<target>Client Secret</target>
 		</trans-unit>
 		<trans-unit id="site.cleverreachGroup.label">
-			<source>List ID</source>
-			<target>List ID</target>
+			<source>Default List ID</source>
+			<target>Standard List ID</target>
 		</trans-unit>
 		<trans-unit id="site.cleverreachGroup.description">
 			<source>The ID of the recipient list of the respective account</source>
 			<target>Die ID der Empfängerliste des jeweiligen Accounts</target>
 		</trans-unit>
+		<trans-unit id="site.cleverreachGroupName.label">
+			<source>Label for default list ID (optional)</source>
+			<target>Bezeichnung der Standard-Listen-ID (optional)</target>
+		</trans-unit>
+		<trans-unit id="site.cleverreachGroupName.description">
+			<source>This label is used in the group select in the plugin and in the frontend template.</source>
+			<target>Die Bezeichnung wird im Select sowohl im Plugin als auch im Frontend-Template verwendet.</target>
+		</trans-unit>
 		<trans-unit id="site.cleverreachDoubleOptInMailId.label">
-			<source>Form ID (Double-Opt-In/Out)</source>
-			<target>Formular ID (Double-Opt-In/Out)</target>
+			<source>Default Form ID (Double-Opt-In/Out)</source>
+			<target>Standard Formular ID (Double-Opt-In/Out)</target>
 		</trans-unit>
 		<trans-unit id="site.cleverreachDoubleOptInMailId.description">
 			<source>The ID of the form for newsletter subscription/unsubscription</source>
 			<target>Die ID des Formulares für die Newsletter An-/Abmeldung</target>
-		</trans-unit>
-		<trans-unit id="site.cleverreachGroupMapping.label">
-			<source>Newsletter Group Mapping (JSON)</source>
-			<target>Newsletter-Gruppen-Mapping (JSON)</target>
-		</trans-unit>
-		<trans-unit id="site.cleverreachGroupMapping.description">
-			<source>Mapping between newsletter names (from form parameter) and Cleverreach group/form IDs. Format: {"NEWSLETTER": {"groupId": 123, "formId": 456}, "NOTICE": {"groupId": 789, "formId": 101}}</source>
-			<target>Mapping zwischen Newsletter-Namen (aus Formular-Parameter) und Cleverreach Gruppen-/Formular-IDs. Format: {"NEWSLETTER": {"groupId": 123, "formId": 456}, "NOTICE": {"groupId": 789, "formId": 101}}</target>
 		</trans-unit>
 		</body>
 	</file>

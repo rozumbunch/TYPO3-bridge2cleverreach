@@ -1,4 +1,3 @@
----
 routeEnhancers:
   Bridge2CleverreachSubscribeformDe:
     type: Extbase

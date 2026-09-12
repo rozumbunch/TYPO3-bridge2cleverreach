@@ -39,6 +39,13 @@ $showItems = [
     $tabAccess
 ];
 
+$showItemsSubscribe = [
+    $tabGeneral,
+    '--palette--;;headers, bodytext,',
+    $pluginFlexform,
+    $tabAccess
+];
+
 $columnsOverrides = [
     'subheader' => [
         'config' => [
@@ -52,23 +59,31 @@ $columnsOverrides = [
 ];
 
 $GLOBALS['TCA']['tt_content']['types']['subscribeform'] = [
-    'showitem' => implode(',', $showItems),
-    'columnsOverrides' => $columnsOverrides,
+    'showitem' => implode(',', $showItemsSubscribe),
+    'columnsOverrides' => array_replace_recursive($columnsOverrides, [
+        'bodytext' => [
+            'label' => 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:teaser',
+            'config' => [
+                'type' => 'text',
+                'enableRichtext' => true,
+                'richtextConfiguration' => 'default',
+            ],
+        ],
+        'pi_flexform' => [
+            'config' => [
+                'ds' => 'FILE:EXT:bridge2cleverreach/Configuration/FlexForms/flexform_subscribeform.xml',
+            ],
+        ],
+    ]),
 ];
 
 $GLOBALS['TCA']['tt_content']['types']['unsubscribeform'] = [
     'showitem' => implode(',', $showItems),
-    'columnsOverrides' => $columnsOverrides,
+    'columnsOverrides' => array_replace_recursive($columnsOverrides, [
+        'pi_flexform' => [
+            'config' => [
+                'ds' => 'FILE:EXT:bridge2cleverreach/Configuration/FlexForms/flexform_unsubscribeform.xml',
+            ],
+        ],
+    ]),
 ];
-
-ExtensionManagementUtility::addPiFlexFormValue(
-    '*',
-    'FILE:EXT:bridge2cleverreach/Configuration/FlexForms/flexform_subscribeform.xml',
-    'subscribeform'
-);
-
-ExtensionManagementUtility::addPiFlexFormValue(
-    '*',
-    'FILE:EXT:bridge2cleverreach/Configuration/FlexForms/flexform_unsubscribeform.xml',
-    'unsubscribeform'
-);

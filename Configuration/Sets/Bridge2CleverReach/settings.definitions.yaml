@@ -1,0 +1,11 @@
+categories:
+  cleverreach:
+    label: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.category.cleverreach'
+
+settings:
+  bridge2cleverreach.includeCss:
+    type: bool
+    default: true
+    category: cleverreach
+    label: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.includeCss.label'
+    description: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.includeCss.description'

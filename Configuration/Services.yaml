@@ -9,3 +9,5 @@ services:
     exclude: '../Classes/Domain/Model/*'
   Rozumbunch\Bridge2Cleverreach\Api\ApiManager:
     public: true
+  Rozumbunch\Bridge2Cleverreach\Backend\Form\NewsletterGroupsFieldConfiguration:
+    public: true

@@ -4,6 +4,7 @@ namespace Rozumbunch\Bridge2Cleverreach\Api;
 
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\RequestFactory;
+use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -148,36 +149,30 @@ class ApiManager implements ApiManagerInterface
     /**
      * Triggers the Double-Opt-In email for a subscriber.
      *
+     * CleverReach replaced its old "Forms" DOI mechanism with "Flows"; both
+     * are still supported on the account's API (scopes oa_forms + oa_flows),
+     * but each has a different id format
+     * sent to POST /v3/forms.json/{id}/send/activate with an "email" field.
+     * See isFlowIdentifier().
+     *
      * @param string $email
-     * @param int $formId
+     * @param string $formId
      * @param array<string, mixed> $options
      * @param string $token
      *
      * @return array<string, mixed>
      */
-    public function triggerDoubleOptInEmail(string $email, int $formId, array $options, string $token)
+    public function triggerDoubleOptInEmail(string $email, string $formId, array $options, string $token)
     {
         $additionalOptions = [
             'headers' => [
                 'Authorization' => "Bearer {$token}",
             ],
-
-            'json' => [
-                'email' => $email,
-                'doidata' => array_merge(
-                    [
-                        'user_ip' => $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1',
-                        'referer' => $_SERVER['HTTP_REFERER'] ?? 'http://localhost',
-                        'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? 'FakeAgent/2.0 (Ubuntu/Linux)',
-                    ],
-                    $options
-                )
-            ],
-
+            'json' => $this->buildDoiPayload($email, $options, $this->isFlowIdentifier($formId)),
         ];
 
         try {
-            $response = $this->requestFactory->request(self::API_ENDPOINT . "/v3/forms.json/{$formId}/send/activate", 'POST', $additionalOptions);
+            $response = $this->requestFactory->request(self::API_ENDPOINT . $this->getDoiActivateEndpoint($formId), 'POST', $additionalOptions);
             $body = $this->getResponseBody($response);
             $data = [
                 'error' => false,
@@ -194,32 +189,68 @@ class ApiManager implements ApiManagerInterface
     /**
      * Triggers the Double-Opt-Out email for a subscriber.
      *
+     * @see triggerDoubleOptInEmail() for the Flow vs. (legacy) Form id distinction.
+     *
      * @param string $email
-     * @param int $formId
+     * @param string $formId
      * @param array<string, mixed> $options
      * @param string $token
      *
      * @return mixed
      */
-    public function triggerDoubleOptOutEmail(string $email, int $formId, array $options, string $token)
+    public function triggerDoubleOptOutEmail(string $email, string $formId, array $options, string $token)
     {
         $additionalOptions = [
             'headers' => [
                 'Authorization' => "Bearer {$token}",
             ],
-            'json' => [
-                'email' => $email,
-                'doidata' => array_merge(
-                    [
-                        'user_ip' => $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1',
-                        'referer' => $_SERVER['HTTP_REFERER'] ?? 'http://localhost',
-                        'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? 'FakeAgent/2.0 (Ubuntu/Linux)',
-                    ],
-                    $options
-                )
-            ],
+            'json' => $this->buildDoiPayload($email, $options, $this->isFlowIdentifier($formId)),
         ];
-        return $this->requestFactory->request('POST', self::API_ENDPOINT . "/v3/forms.json/{$formId}/send/deactivate", $additionalOptions);
+
+        return $this->requestFactory->request(self::API_ENDPOINT . $this->getDoiDeactivateEndpoint($formId), 'POST', $additionalOptions);
+    }
+
+    /**
+     * @param array<string, mixed> $options
+     * @return array<string, mixed>
+     */
+    private function buildDoiPayload(string $email, array $options, bool $isFlow): array
+    {
+        $doidata = array_merge(
+            [
+                'user_ip' => $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1',
+                'referer' => $_SERVER['HTTP_REFERER'] ?? 'http://localhost',
+                'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? 'FakeAgent/2.0 (Ubuntu/Linux)',
+            ],
+            $options
+        );
+
+        return $isFlow
+            ? ['receiver_id' => $email, 'doidata' => $doidata]
+            : ['email' => $email, 'doidata' => $doidata];
+    }
+
+    private function getDoiActivateEndpoint(string $formId): string
+    {
+        return $this->isFlowIdentifier($formId)
+            ? "/flow/flow/{$formId}/send"
+            : "/v3/forms.json/{$formId}/send/activate";
+    }
+
+    private function getDoiDeactivateEndpoint(string $formId): string
+    {
+        return $this->isFlowIdentifier($formId)
+            ? "/flow/flow/{$formId}/send"
+            : "/v3/forms.json/{$formId}/send/deactivate";
+    }
+
+    /**
+     * Flow ids are UUIDs (e.g. "5555aaaaa-3ca7-48be-9736-8434be153acf");
+     * legacy Form ids are plain numeric strings (e.g. "123456").
+     */
+    private function isFlowIdentifier(string $id): bool
+    {
+        return (bool)preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i', $id);
     }
 
     /**

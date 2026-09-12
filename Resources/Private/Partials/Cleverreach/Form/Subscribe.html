@@ -1,7 +1,18 @@
 <f:form action="subscribe" controller="Cleverreach" objectName="cleverreachapi"
         pageUid="{data.pid}" pluginName="subscribeform"
+        class="newsletter-form"
         hiddenFieldClassName="form-floating hidden-fields"
 >
+    <f:if condition="{newsletterGroupOptions -> f:count()} > 1">
+        <div class="newsletter-form__select">
+            <label for="newsletter-form-group"><f:translate key="form.newsletterGroups.choose" extensionName="bridge2cleverreach" /></label>
+            <f:form.select property="newsletter-group" id="newsletter-form-group" class="form-select"
+                           options="{newsletterGroupOptions}"
+                           prependOptionLabel="{f:translate(key: 'form.newsletterGroups.subscribe', extensionName: 'bridge2cleverreach')}"
+                           prependOptionValue="all" required="true" />
+        </div>
+    </f:if>
+
     <div class="form-floating col">
         <f:form.textfield property="newsletter-form-name" id="newsletter-form-name" class="form-control"
                           placeholder=" " required="{f:if(condition: '{settings.onlyTechRequirement}!=1', then: 'true', else: 'false')}" />
@@ -34,7 +45,5 @@
         </div>
     </f:if>
 
-
     <f:form.button class="btn btn--main"><f:translate key="form.button.submit" extensionName="bridge2cleverreach" /></f:form.button>
-
 </f:form>

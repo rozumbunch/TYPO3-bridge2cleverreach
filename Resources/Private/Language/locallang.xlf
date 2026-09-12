@@ -18,6 +18,18 @@
 			<trans-unit id="success.unsubscribe">
 				<source>You have successfully unsubscribed</source>
 			</trans-unit>
+			<trans-unit id="form.newsletterGroups.choose">
+				<source>Select newsletter</source>
+			</trans-unit>
+			<trans-unit id="form.newsletterGroups.subscribe">
+				<source>Subscribe to all newsletters</source>
+			</trans-unit>
+			<trans-unit id="form.newsletterGroups.unsubscribe">
+				<source>Unsubscribe from all newsletters</source>
+			</trans-unit>
+			<trans-unit id="form.newsletterGroups.default">
+				<source>Newsletter</source>
+			</trans-unit>
 			<trans-unit id="form.label.firstname">
 				<source>First Name</source>
 			</trans-unit>

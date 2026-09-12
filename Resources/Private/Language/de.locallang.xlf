@@ -23,6 +23,22 @@
 				<source>You have successfully unsubscribed</source>
 				<target>Du hast dich erfolgreich abgemeldet</target>
 			</trans-unit>
+			<trans-unit id="form.newsletterGroups.choose">
+				<source>Select newsletter</source>
+				<target>Newsletter auswählen</target>
+			</trans-unit>
+			<trans-unit id="form.newsletterGroups.subscribe">
+				<source>Subscribe to all newsletters</source>
+				<target>Alle Newsletter abonnieren</target>
+			</trans-unit>
+			<trans-unit id="form.newsletterGroups.unsubscribe">
+				<source>Unsubscribe from all newsletters</source>
+				<target>Alle Newsletter abbestellen</target>
+			</trans-unit>
+			<trans-unit id="form.newsletterGroups.default">
+				<source>Newsletter</source>
+				<target>Newsletter</target>
+			</trans-unit>
 			<trans-unit id="form.label.firstname">
 				<source>First Name</source>
 				<target>Vorname</target>

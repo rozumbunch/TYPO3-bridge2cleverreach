@@ -8,8 +8,8 @@
 				<target>Titel</target>
 			</trans-unit>
 			<trans-unit id="teaser">
-				<source>Subheader</source>
-				<target>Untertitel</target>
+				<source>Teaser</source>
+				<target>Teaser</target>
 			</trans-unit>
             <trans-unit id="onlyTechRequirement">
                 <source>Only the technically required fields are required (Email address).</source>
@@ -22,6 +22,22 @@
             <trans-unit id="flexform.sheetTitle">
                 <source>Configuration</source>
                 <target>Konfiguration Bereich</target>
+            </trans-unit>
+            <trans-unit id="flexform.newsletterGroups.label">
+                <source>Newsletter groups</source>
+                <target>Newsletter-Gruppen</target>
+            </trans-unit>
+            <trans-unit id="flexform.newsletterGroups.description">
+                <source>Select which CleverReach groups this form subscribes to. If none are selected, the default group below is used.</source>
+                <target>Wählen Sie aus, in welche CleverReach-Gruppen sich Nutzer über dieses Formular anmelden können. Wird keine Gruppe ausgewählt, wird die Standardgruppe verwendet.</target>
+            </trans-unit>
+            <trans-unit id="flexform.newsletterGroups.unsubscribe.description">
+                <source>Select which CleverReach groups this form unsubscribes from. If none are selected, the visitor is removed from all configured groups.</source>
+                <target>Wählen Sie aus, aus welchen CleverReach-Gruppen sich der Nutzer über dieses Formular abmelden kann. Wenn keine Gruppe ausgewählt wird, erfolgt die Abmeldung aus allen konfigurierten Gruppen.</target>
+            </trans-unit>
+            <trans-unit id="flexform.newsletterGroups.default">
+                <source>Default (site configuration)</source>
+                <target>Standard (Site-Konfiguration)</target>
             </trans-unit>
             <trans-unit id="flexform.creverreachGroup.label">
                 <source>List ID</source>
@@ -46,6 +62,26 @@
             <trans-unit id="flexform.showPrivacyCheckbox.description">
                 <source>If enabled, a privacy checkbox will be displayed in the frontend form</source>
                 <target>Wenn aktiviert, wird im Frontend-Formular eine Datenschutz-Checkbox angezeigt</target>
+            </trans-unit>
+            <trans-unit id="flexform.privacyCheckboxLinkToPrivacyPolicyPid.label">
+                <source>Privacy policy page</source>
+                <target>Datenschutz-Seite</target>
+            </trans-unit>
+            <trans-unit id="flexform.privacyCheckboxLinkToPrivacyPolicyPid.description">
+                <source>Page linked from the privacy checkbox text on the subscribe form</source>
+                <target>Seite, die im Text der Datenschutz-Checkbox verlinkt wird</target>
+            </trans-unit>
+            <trans-unit id="settings.category.cleverreach">
+                <source>CleverReach</source>
+                <target>CleverReach</target>
+            </trans-unit>
+            <trans-unit id="settings.includeCss.label">
+                <source>Include default CSS</source>
+                <target>Standard-CSS einbinden</target>
+            </trans-unit>
+            <trans-unit id="settings.includeCss.description">
+                <source>Include EXT:bridge2cleverreach/Resources/Public/Css/newsletter.css via page.includeCSS.bridge2cleverreach. Disable this if the site provides its own styles.</source>
+                <target>Bindet EXT:bridge2cleverreach/Resources/Public/Css/newsletter.css über page.includeCSS.bridge2cleverreach ein. Deaktivieren, wenn die Site eigene Styles mitbringt.</target>
             </trans-unit>
 		</body>
 	</file>

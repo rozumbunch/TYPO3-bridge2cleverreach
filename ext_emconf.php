@@ -18,4 +18,5 @@ $EM_CONF[$_EXTKEY] = [
             'Rozumbunch\\Bridge2Cleverreach\\' => 'Classes/',
         ],
     ],
+    'icon' => 'Resources/Public/Icons/Extension.svg',
 ];

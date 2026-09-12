@@ -5,25 +5,20 @@
 				<sheetTitle>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.sheetTitle</sheetTitle>
 				<type>array</type>
 				<el>
-					<settings.creverreachGroup>
-						<label>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.creverreachGroup.label</label>
-						<description>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.creverreachGroup.description</description>
+					<settings.newsletterGroups>
+						<label>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.newsletterGroups.label</label>
+						<description>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.newsletterGroups.unsubscribe.description</description>
+						<displayCond>USER:Rozumbunch\Bridge2Cleverreach\Backend\Form\NewsletterGroupsFieldConfiguration->isVisible</displayCond>
 						<config>
-							<type>input</type>
-							<size>30</size>
+							<type>select</type>
+							<renderType>selectMultipleSideBySide</renderType>
+							<itemsProcFunc>Rozumbunch\Bridge2Cleverreach\Backend\Form\NewsletterGroupsFieldConfiguration->itemsProcFunc</itemsProcFunc>
+							<maxitems>20</maxitems>
+							<size>5</size>
 						</config>
-					</settings.creverreachGroup>
-					<settings.doubleOptInMailId>
-						<label>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.doubleOptInMailId.label</label>
-						<description>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.doubleOptInMailId.description</description>
-						<config>
-							<type>input</type>
-							<size>30</size>
-						</config>
-					</settings.doubleOptInMailId>
+					</settings.newsletterGroups>
 				</el>
 			</ROOT>
 		</configarea>
 	</sheets>
 </T3DataStructure>
-

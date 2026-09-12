@@ -5,22 +5,18 @@
 				<sheetTitle>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.sheetTitle</sheetTitle>
 				<type>array</type>
 				<el>
-					<settings.creverreachGroup>
-						<label>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.creverreachGroup.label</label>
-						<description>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.creverreachGroup.description</description>
+					<settings.newsletterGroups>
+						<label>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.newsletterGroups.label</label>
+						<description>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.newsletterGroups.description</description>
+						<displayCond>USER:Rozumbunch\Bridge2Cleverreach\Backend\Form\NewsletterGroupsFieldConfiguration->isVisible</displayCond>
 						<config>
-							<type>input</type>
-							<size>30</size>
+							<type>select</type>
+							<renderType>selectMultipleSideBySide</renderType>
+							<itemsProcFunc>Rozumbunch\Bridge2Cleverreach\Backend\Form\NewsletterGroupsFieldConfiguration->itemsProcFunc</itemsProcFunc>
+							<maxitems>20</maxitems>
+							<size>5</size>
 						</config>
-					</settings.creverreachGroup>
-					<settings.doubleOptInMailId>
-						<label>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.doubleOptInMailId.label</label>
-						<description>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.doubleOptInMailId.description</description>
-						<config>
-							<type>input</type>
-							<size>30</size>
-						</config>
-					</settings.doubleOptInMailId>
+					</settings.newsletterGroups>
 					<settings.onlyTechRequirement>
 						<label>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:onlyTechRequirement</label>
 						<description>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:onlyTechRequirement.description</description>
@@ -33,12 +29,30 @@
 					<settings.showPrivacyCheckbox>
 						<label>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.showPrivacyCheckbox.label</label>
 						<description>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.showPrivacyCheckbox.description</description>
+						<onChange>reload</onChange>
 						<config>
 							<type>check</type>
 							<renderType>checkboxToggle</renderType>
 							<default>0</default>
 						</config>
 					</settings.showPrivacyCheckbox>
+					<settings.privacyCheckbox.linkToPrivacyPolicyPid>
+						<label>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.privacyCheckboxLinkToPrivacyPolicyPid.label</label>
+						<description>LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:flexform.privacyCheckboxLinkToPrivacyPolicyPid.description</description>
+						<displayCond>FIELD:settings.showPrivacyCheckbox:=:1</displayCond>
+						<config>
+							<type>group</type>
+							<allowed>pages</allowed>
+							<maxitems>1</maxitems>
+							<minitems>0</minitems>
+							<size>1</size>
+							<suggestOptions>
+								<default>
+									<additionalSearchFields>nav_title, alias, url</additionalSearchFields>
+								</default>
+							</suggestOptions>
+						</config>
+					</settings.privacyCheckbox.linkToPrivacyPolicyPid>
 				</el>
 			</ROOT>
 		</configarea>

@@ -3,25 +3,27 @@ defined('TYPO3') || die();
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
+$GLOBALS['TCA']['tt_content']['columns']['CType']['config']['itemGroups']['newsletter']
+    ??= 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:tt_content.CType.div.newsletter';
 
 ExtensionManagementUtility::addPlugin(
     [
-        'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:tx_bridge2cleverreach_subscribeform.name',
-        'subscribeform',
-        'bridge2cleverreach-subscribeform'
-    ],
-    'CType',
-    'bridge2cleverreach'
+        'label' => 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:tx_bridge2cleverreach_subscribeform.name',
+        'value' => 'subscribeform',
+        'icon' => 'bridge2cleverreach-subscribeform',
+        'group' => 'newsletter',
+        'description' => 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:tx_bridge2cleverreach_subscribeform.description',
+    ]
 );
 
 ExtensionManagementUtility::addPlugin(
     [
-        'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:tx_bridge2cleverreach_unsubscribeform.name',
-        'unsubscribeform',
-        'bridge2cleverreach-unsubscribeform'
-    ],
-    'CType',
-    'bridge2cleverreach'
+        'label' => 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:tx_bridge2cleverreach_unsubscribeform.name',
+        'value' => 'unsubscribeform',
+        'icon' => 'bridge2cleverreach-unsubscribeform',
+        'group' => 'newsletter',
+        'description' => 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:tx_bridge2cleverreach_unsubscribeform.description',
+    ]
 );
 
 $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['subscribeform'] = 'bridge2cleverreach-subscribeform';

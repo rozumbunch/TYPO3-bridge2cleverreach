@@ -1,21 +1,25 @@
-[![TYPO3 compatibility](https://img.shields.io/badge/TYPO3-12.4-ff8700?maxAge=3600&logo=typo3)](https://get.typo3.org/)
-[![TYPO3 compatibility](https://img.shields.io/badge/TYPO3-13.4-ff8700?maxAge=3600&logo=typo3)](https://get.typo3.org/)
-[![TYPO3 compatibility](https://img.shields.io/badge/TYPO3-14.0-ff8700?maxAge=3600&logo=typo3)](https://get.typo3.org/)
+
+![TYPO3 compatibility](https://img.shields.io/badge/TYPO3-13.4-ff8700?maxAge=3600&logo=typo3)
+![TYPO3 compatibility](https://img.shields.io/badge/TYPO3-14.0-ff8700?maxAge=3600&logo=typo3)
 
 # TYPO3 extension `bridge2cleverreach`
 
 API bridge extension for seamless integration between TYPO3 and the CleverReach email marketing platform.
 
-|                    | URL                                                                          |
-|--------------------|------------------------------------------------------------------------------|
-| **Repository:**    | https://github.com/rozumbunch/TYPO3-bridge2cleverreach                       |
+
+|                            | URL                                                                                                                                                                                                             |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Repository:**            | [https://github.com/rozumbunch/TYPO3-bridge2cleverreach](https://github.com/rozumbunch/TYPO3-bridge2cleverreach)                                                                                                |
 | **Read Extension Manual:** | [English](https://github.com/rozumbunch/TYPO3-bridge2cleverreach/blob/main/Documentation/base/index.md) · [Deutsch](https://github.com/rozumbunch/TYPO3-bridge2cleverreach/blob/main/Documentation/de/index.md) |
-| **TER:**           | https://extensions.typo3.org/extension/bridge2cleverreach                    |
-| **Packagist:**     | https://packagist.org/packages/rozumbunch/bridge2cleverreach                 |
+| **TER:**                   | [https://extensions.typo3.org/extension/bridge2cleverreach](https://extensions.typo3.org/extension/bridge2cleverreach)                                                                                          |
+| **Packagist:**             | [https://packagist.org/packages/rozumbunch/bridge2cleverreach](https://packagist.org/packages/rozumbunch/bridge2cleverreach)                                                                                    |
+
 
 This extension connects TYPO3 with CleverReach. After installation and configuration of the API credentials, newsletter subscribe and unsubscribe forms are available as content elements. Double Opt-In is handled via the CleverReach API.
 
 ---
+
+
 
 ## Important: CleverReach REST API change
 
@@ -26,6 +30,8 @@ This extension connects TYPO3 with CleverReach. After installation and configura
 Double Opt-In / Double Opt-Out now uses `POST /flow/flow/{id}/send` when a Flow UUID is configured. Legacy numeric Form IDs continue to work.
 
 ---
+
+
 
 ## Features
 
@@ -39,6 +45,9 @@ Double Opt-In / Double Opt-Out now uses `POST /flow/flow/{id}/send` when a Flow 
 - **Route Enhancers**: Clean, SEO-friendly URLs with language-specific routes
 - **Content Elements**: Two plugins available as content elements (Subscribeform and Unsubscribeform)
 - **Headless API**: RESTful API endpoint (`POST /cleverreach/api`) for headless integrations, supporting subscribe, unsubscribe, and get subscriber actions
+- **Dynamic Content ("My Content")**: Answers CleverReach's My Content picker; ships News and Content Elements categories and lets you register your own via TypoScript + a custom `dataProcessor`, see [Dynamic Content](Documentation/base/Pages/02-Usage/6-dynamic-content.md)
+
+
 
 ## Installation
 
@@ -46,7 +55,7 @@ Double Opt-In / Double Opt-Out now uses `POST /flow/flow/{id}/send` when a Flow 
 composer req rozumbunch/bridge2cleverreach
 ```
 
-Usage, Site Set, Flows API, group management and the headless API are documented in the extension manual:
+Usage, Site Set, Flows API, group management, dynamic content and the headless API are documented in the extension manual:
 
 - [English](Documentation/base/index.md)
 - [Deutsch](Documentation/de/index.md)
@@ -55,15 +64,19 @@ In the TYPO3 backend the same documentation is available via **Help > Documentat
 
 ## Requirements
 
-- TYPO3 12.4+ / 13.0+ / 14.0+
-- PHP 8.1+
+- 13.0+ / 14.0+
+- PHP 8.2+
 - CleverReach API account with valid credentials and the OAuth scope `oa_flows` (plus `oa_forms` for legacy Form IDs)
+
+
 
 ## Feedback and Support
 
 You can reach us on the [Contact Form](https://www.rozumbunch.com/kontakt)
 
 ---
+
+
 
 ## Deutsch
 
@@ -77,6 +90,8 @@ Nach Installation und Konfiguration der API-Zugangsdaten stehen Anmelde- und Abm
 
 ---
 
+
+
 ## Wichtig: CleverReach REST-API-Änderung
 
 **Diese Version berücksichtigt die Umstellung der CleverReach REST-API:**
@@ -86,6 +101,8 @@ Nach Installation und Konfiguration der API-Zugangsdaten stehen Anmelde- und Abm
 Double Opt-In / Double Opt-Out nutzt `POST /flow/flow/{id}/send`, sobald eine Flow-UUID konfiguriert ist. Numerische Formular-IDs funktionieren weiter.
 
 ---
+
+
 
 ## Funktionen
 
@@ -99,6 +116,9 @@ Double Opt-In / Double Opt-Out nutzt `POST /flow/flow/{id}/send`, sobald eine Fl
 - **Route Enhancers**: sprechende, SEO-freundliche URLs je Sprache
 - **Content Elements**: zwei Plugins als Inhaltselemente (Anmeldeformular und Abmeldeformular)
 - **Headless API**: REST-Endpunkt (`POST /cleverreach/api`) für Headless-Integrationen (Subscribe, Unsubscribe, Get Subscriber)
+- **Dynamic Content ("My Content")**: Beantwortet den My-Content-Picker von CleverReach; liefert die Kategorien News und Content Elements mit und erlaubt eigene Kategorien über TypoScript + einen eigenen `dataProcessor`, siehe [Dynamic Content](Documentation/de/Pages/02-Usage/6-dynamic-content.md)
+
+
 
 ## Installation
 
@@ -106,7 +126,7 @@ Double Opt-In / Double Opt-Out nutzt `POST /flow/flow/{id}/send`, sobald eine Fl
 composer req rozumbunch/bridge2cleverreach
 ```
 
-Nutzung, Site Set, Flows API, Gruppenverwaltung und Headless-API stehen im Extension-Manual:
+Nutzung, Site Set, Flows API, Gruppenverwaltung, Dynamic Content und Headless-API stehen im Extension-Manual:
 
 - [Deutsch](Documentation/de/index.md)
 - [English](Documentation/base/index.md)
@@ -115,9 +135,11 @@ Im TYPO3-Backend ist dieselbe Dokumentation über **Help > Documentation** errei
 
 ## Voraussetzungen
 
-- TYPO3 12.4+ / 13.0+ / 14.0+
-- PHP 8.1+
+- TYPO3 13.0+ / 14.0+
+- PHP 8.2+
 - CleverReach-API-Account mit gültigen Zugangsdaten und OAuth-Scope `oa_flows` (plus `oa_forms` für bisherige Formular-IDs)
+
+
 
 ## Feedback und Support
 

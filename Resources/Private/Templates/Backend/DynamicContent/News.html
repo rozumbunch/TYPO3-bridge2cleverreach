@@ -1,0 +1,79 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+<f:layout name="Module"/>
+
+<f:section name="Content">
+    <div style="padding: 20px;">
+        <form method="post" enctype="multipart/form-data" id="BackendCleverReachDynamicContentController">
+            <f:if condition="{currentModule}">
+                <h1>{f:translate(key: currentModule.title, default: currentModule.title)}</h1>
+                <f:if condition="{currentModule.description}">
+                    <p>{f:translate(key: currentModule.description, default: currentModule.description)}</p>
+                </f:if>
+            </f:if>
+
+            <div class="typo3-TCEforms">
+                <div role="tabpanel">
+                    <fieldset class="form-section js-multiselect-widget">
+                        <div class="form-group t3js-formengine-validation-marker t3js-formengine-palette-field">
+                            <div class="formengine-field-item t3js-formengine-field-item">
+                                <div class="form-wizards-wrap">
+                                    <div class="form-wizards-element">
+                                        <div class="form-multigroup-wrap t3js-formengine-field-group">
+                                            <div class="form-multigroup-item form-multigroup-element">
+                                                <label>
+                                                    <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentNews.selected"/>
+                                                </label>
+                                                <div class="form-wizards-wrap form-wizards-aside">
+                                                    <div class="form-wizards-element" style="display: flex; column-gap: 6px;">
+                                                        <select id="selectedItems" multiple size="8" class="form-select form-control js-selected">
+                                                            <f:for each="{selectedNews}" as="newsItem">
+                                                                <option value="{newsItem.uid}" selected>{newsItem.title}</option>
+                                                            </f:for>
+                                                        </select>
+                                                        <div class="form-wizards-items-aside form-wizards-items-aside--move">
+                                                            <div class="btn-group-vertical">
+                                                                <button type="button" class="btn btn-default mb-2 js-remove" title="{f:translate(key: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentNews.remove')}">
+                                                                    <core:icon identifier="actions-move-right"/>
+                                                                </button>
+                                                                <button type="button" class="btn btn-default mb-2 js-add" title="{f:translate(key: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentNews.add')}">
+                                                                    <core:icon identifier="actions-move-left"/>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-multigroup-item form-multigroup-element">
+                                                <label>
+                                                    <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentNews.available"/>
+                                                </label>
+                                                <div class="form-wizards-wrap form-wizards-aside">
+                                                    <div class="form-wizards-element">
+                                                        <input type="search" class="form-control form-control-sm mb-2 js-available-search" placeholder="{f:translate(key: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentNews.search')}" autocomplete="off">
+                                                        <select id="availableItems" multiple size="8" class="form-select form-control js-available">
+                                                            <f:for each="{news}" as="newsItem">
+                                                                <f:if condition="!{selectedNews.{newsItem.uid}}">
+                                                                    <option value="{newsItem.uid}">{newsItem.title}</option>
+                                                                </f:if>
+                                                            </f:for>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="selectedNews" class="js-hidden" id="multiSelectHidden" value="{selectedNewsString}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+    </div>
+</f:section>
+</html>

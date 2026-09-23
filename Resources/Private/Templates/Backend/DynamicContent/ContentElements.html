@@ -1,0 +1,103 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+<f:layout name="Module"/>
+
+<f:section name="Content">
+    <div style="padding: 20px;">
+        <form method="post" enctype="multipart/form-data" id="BackendCleverReachDynamicContentController">
+            <h1>
+                <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentElements.heading"/>
+            </h1>
+            <h2>
+                <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentElements.pages"/>
+            </h2>
+            <p>
+                <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentElements.pages.description"/>
+            </p>
+
+            <div class="typo3-TCEforms">
+                <div role="tabpanel">
+                    <fieldset class="form-section">
+                        <div class="form-group t3js-formengine-validation-marker t3js-formengine-palette-field">
+                            <div class="formengine-field-item t3js-formengine-field-item">
+                                <div class="form-wizards-wrap">
+                                    <div class="form-wizards-item-element">
+                                        <select multiple size="5" class="form-select form-control js-page-picker-list">
+                                            <f:for each="{sourcePages}" as="sourcePage">
+                                                <option value="{sourcePage.uid}">{sourcePage.title} [{sourcePage.uid}]</option>
+                                            </f:for>
+                                        </select>
+                                    </div>
+                                    <div class="form-wizards-item-aside form-wizards-item-aside--field-control">
+                                        <div class="btn-group-vertical">
+                                            <button
+                                                type="button"
+                                                class="btn btn-default js-page-picker-browse"
+                                                data-browser-url="{elementBrowserUrl}"
+                                                data-root-page-id="{rootPageId}"
+                                                data-site-page-ids="{sitePageIds}"
+                                                title="{f:translate(key: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentElements.browse')}"
+                                            ><core:icon identifier="actions-insert-record"/></button>
+                                            <button
+                                                type="button"
+                                                class="btn btn-default js-page-picker-remove"
+                                                title="{f:translate(key: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentElements.removePage')}"
+                                            ><core:icon identifier="actions-selection-delete"/></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="contentFromPids" class="js-page-picker-value" value="{sourcePagesString}"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group t3js-formengine-validation-marker t3js-formengine-palette-field">
+                            <h2>
+                                <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentElements.selected"/>
+                            </h2>
+                            <p>
+                                <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentElements.selected.description"/>
+                                <f:if condition="{allowedCTypes}"> ({allowedCTypes})</f:if>
+                            </p>
+                            <div class="formengine-field-item t3js-formengine-field-item">
+                                <div class="form-wizards-wrap">
+                                    <div class="form-wizards-item-element">
+                                        <select multiple size="8" class="form-select form-control js-content-picker-list">
+                                            <f:for each="{selectedContentElements}" as="contentElement">
+                                                <option value="{contentElement.uid}">{contentElement.label}</option>
+                                            </f:for>
+                                        </select>
+                                    </div>
+                                    <div class="form-wizards-item-aside form-wizards-item-aside--field-control">
+                                        <div class="btn-group-vertical">
+                                            <button
+                                                type="button"
+                                                class="btn btn-default js-content-picker-browse"
+                                                data-browser-url="{elementBrowserUrl}"
+                                                data-root-page-id="{rootPageId}"
+                                                data-allowed-element-ids="{allowedElementIds}"
+                                                data-element-labels="{elementLabelsJson}"
+                                                data-not-allowed-title="{f:translate(key: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentElements.notAllowed.title')}"
+                                                data-not-allowed-message="{f:translate(key: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentElements.notAllowed.message')}"
+                                                title="{f:translate(key: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentElements.wizard')}"
+                                            ><core:icon identifier="actions-insert-record"/></button>
+                                            <button
+                                                type="button"
+                                                class="btn btn-default js-content-picker-remove"
+                                                title="{f:translate(key: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentElements.remove')}"
+                                            ><core:icon identifier="actions-selection-delete"/></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="selectedContentElements" class="js-content-picker-value" value="{selectedContentElementsString}"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+    </div>
+</f:section>
+</html>

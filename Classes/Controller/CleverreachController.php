@@ -4,7 +4,11 @@ namespace Rozumbunch\Bridge2Cleverreach\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Rozumbunch\Bridge2Cleverreach\Api\ApiManager;
+use Rozumbunch\Bridge2Cleverreach\Domain\Repository\ContentElementsRepository;
+use Rozumbunch\Bridge2Cleverreach\Domain\Repository\NewsRepository;
+use Rozumbunch\Bridge2Cleverreach\Services\DynamicContentService;
 use Rozumbunch\Bridge2Cleverreach\Utility\CleverReachGroupMapper;
+use TYPO3\CMS\Core\Attribute\AsAllowedCallable;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -19,9 +23,17 @@ class CleverreachController extends ActionController
     /** @var ApiManager */
     private $apiManager;
 
-    public function __construct(ApiManager $apiManager)
+    /** @var NewsRepository */
+    public $newsRepository;
+
+    /** @var ContentElementsRepository */
+    public $contentElementsRepository;
+
+    public function __construct(ApiManager $apiManager, NewsRepository $newsRepository, ContentElementsRepository $contentElementsRepository)
     {
         $this->apiManager = $apiManager;
+        $this->newsRepository = $newsRepository;
+        $this->contentElementsRepository = $contentElementsRepository;
     }
 
     /**
@@ -371,5 +383,97 @@ class CleverreachController extends ActionController
         $message = LocalizationUtility::translate('api.error.groupError', 'bridge2cleverreach') ?? 'Error in group \'%s\': %s';
 
         return sprintf($message, $label, $errorMessage !== '' ? $errorMessage : (LocalizationUtility::translate('api.error.unknownError', 'bridge2cleverreach') ?? 'Unknown error'));
+    }
+
+
+    /**
+     * Answers CleverReach's "My Content" script contract
+     * (https://developers.cleverreach.com/docs/api-categories/mycontent):
+     * called directly as a TypoScript USER cObject on the dedicated
+     * `typeNum = 1705405176` page (see
+     * Configuration/TypoScript/Endpoints/clevereach_dynamic_content_endpoint.typoscript),
+     * so it runs outside the normal Extbase action dispatch and has no
+     * populated $this->request - the site/request are taken from the
+     * global TYPO3 request instead, matching CleverReach's plain
+     * POST ?get=filter / ?get=search calls.
+     *
+     * A PSR-15 middleware on a plain (non-page) path was tried instead, to
+     * sidestep the #[AsAllowedCallable] requirement below, but TYPO3 resolves
+     * the requested page - and 404s on any path that isn't one - before it
+     * builds the TypoScript/TSFE context this method's dynamicContents
+     * config depends on, so a middleware can never see both a resolved page
+     * and a non-existent one at the same time. The typeNum/USER cObject
+     * route already goes through the full page + TypoScript pipeline, so it
+     * stays the only approach that works.
+     */
+    #[AsAllowedCallable]
+    public function getDynamicContent()
+    {
+        header('Content-Type: application/json; charset=utf-8');
+
+        $get = $_POST['get'] ?? '';
+        $request = $GLOBALS['TYPO3_REQUEST'];
+        /** @var Site $site */
+        $site = $request->getAttribute('site');
+
+        if ($get === 'filter') {
+            $preparedData = [
+                [
+                    'name' => 'Category',
+                    'type' => 'dropdown',
+                    'query_key' => 'category',
+                    'values' => []
+                ]
+            ];
+
+            $rootPageId = $site->getRootPageId();
+            $types = DynamicContentService::getDynamicContentFilters($rootPageId);
+
+            if (!empty($types)) {
+                foreach ($types as $type) {
+					$text = ucfirst($type['type']);
+                    $preparedData[0]['values'][] = [
+                        'value' => $type['type'],
+                        'text' => str_replace('-', ' ', $text),
+                    ];
+                }
+            }
+
+            echo json_encode($preparedData);
+            exit;
+        }
+
+        if ($get === 'search') {
+            $category = $_POST['category'] ?? '';
+            $dynamicContentsConfig = DynamicContentService::getAllDynamicContentsTypes();
+            $params = [
+                'items' => [],
+                'site' => $site,
+                'request' => $request,
+            ];
+            if ($dynamicContentsConfig) {
+                foreach ($dynamicContentsConfig as $dynamicContent) {
+                    if ($category == $dynamicContent['type']) {
+                        if (isset($dynamicContent['detailPid'])) {
+                            $params['detailPid'] = $dynamicContent['detailPid'];
+                        }
+                        GeneralUtility::callUserFunction($dynamicContent['dataProcessor'], $params, $this);
+                    }
+                }
+            }
+
+            echo json_encode([
+                'items' => $params['items'],
+                'settings' => [
+                    'type' => 'rss',
+                    'link_text_editable' => true,
+                    'multiselect' => false
+                ]
+            ]);
+            exit;
+        }
+
+        echo '<table><tr><td>This is CleverReach default content</td></tr></table>';
+        exit;
     }
 }

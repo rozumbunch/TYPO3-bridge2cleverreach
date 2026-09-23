@@ -286,6 +286,73 @@ class ApiManager implements ApiManagerInterface
     }
 
     /**
+     * Registers a "My Content" dynamic content script with CleverReach, so
+     * it becomes selectable inside CleverReach's mailing editor.
+     *
+     * @param string $name
+     * @param string $url
+     * @param string $token
+     * @return array<string, mixed>
+     */
+    public function setClevereachMyContent(string $name, string $url, string $token): array
+    {
+        $additionalOptions = [
+            'headers' => [
+                'Authorization' => "Bearer {$token}",
+            ],
+            'json' => [
+                'name' => $name,
+                'url' => $url,
+            ],
+        ];
+
+        try {
+            $this->requestFactory->request(self::API_ENDPOINT . '/v3/mycontent.json', 'POST', $additionalOptions);
+            $data = [
+                'error' => false,
+            ];
+        } catch (\Exception $e) {
+            $data = [
+                'error' => true,
+                'message' => $this->getErrorMessage($e->getMessage())
+            ];
+        }
+
+        return $data;
+    }
+
+    /**
+     * @param string $token
+     * @return mixed
+     */
+    public function getClevereachMyContent(string $token)
+    {
+        $additionalOptions = [
+            'headers' => [
+                'Authorization' => "Bearer {$token}",
+            ],
+        ];
+        $response = $this->requestFactory->request(self::API_ENDPOINT . '/v3/mycontent.json', 'GET', $additionalOptions);
+        return $this->getResponseBody($response);
+    }
+
+    /**
+     * @param string|int $id
+     * @param string $token
+     * @return mixed
+     */
+    public function removeClevereachMyContent($id, string $token)
+    {
+        $additionalOptions = [
+            'headers' => [
+                'Authorization' => "Bearer {$token}",
+            ],
+        ];
+        $response = $this->requestFactory->request(self::API_ENDPOINT . '/v3/mycontent.json/' . $id, 'DELETE', $additionalOptions);
+        return $this->getResponseBody($response);
+    }
+
+    /**
      * @param string $massage
      * @return string
      */

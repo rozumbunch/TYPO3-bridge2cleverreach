@@ -14,3 +14,4 @@ API-Zugangsdaten und Empfängerlisten bleiben in der **Site Configuration** (Rei
 3. Flexible Gruppenverwaltung
 4. Inhaltselemente
 5. Headless-API
+6. Dynamic Content (My Content für CleverReach)

@@ -1,0 +1,93 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+<f:layout name="Module"/>
+
+<f:section name="Content">
+    <f:if condition="{error}">
+        <div class="alert alert-danger" role="alert">{error}</div>
+    </f:if>
+
+    <f:if condition="{currentModule}">
+        <h1>{f:translate(key: currentModule.title, default: currentModule.title)}</h1>
+        <f:if condition="{currentModule.description}">
+            <p>{f:translate(key: currentModule.description, default: currentModule.description)}</p>
+        </f:if>
+    </f:if>
+
+    <div class="card-container">
+        <div class="card card-size-medium">
+            <div class="card-header">
+                <div class="card-icon">
+                    <core:icon identifier="{f:if(condition: currentModule.iconIdentifier, then: currentModule.iconIdentifier, else: 'be_modul_dynamiccontent_register')}" size="medium" alternativeMarkupIdentifier="inline"/>
+                </div>
+                <div class="card-header-body">
+                    <h2 class="card-title">
+                        <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentRegister.title"/>
+                    </h2>
+                    <span class="card-subtitle">
+                        <f:if condition="{isContentRegistered}">
+                            <f:then>
+                                <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentRegister.status.registered"/>
+                            </f:then>
+                            <f:else>
+                                <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentRegister.status.notRegistered"/>
+                            </f:else>
+                        </f:if>
+                    </span>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="card-text d-flex align-items-center gap-2">
+                    <f:if condition="{isContentRegistered}">
+                        <f:then>
+                            <span class="rounded-circle d-inline-block bg-success" style="width: 0.75rem; height: 0.75rem;" aria-hidden="true"></span>
+                            <span class="badge badge-success">
+                                <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentRegister.status.registered"/>
+                            </span>
+                        </f:then>
+                        <f:else>
+                            <span class="rounded-circle d-inline-block bg-danger" style="width: 0.75rem; height: 0.75rem;" aria-hidden="true"></span>
+                            <span class="badge badge-danger">
+                                <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentRegister.status.notRegistered"/>
+                            </span>
+                        </f:else>
+                    </f:if>
+                </p>
+                <p class="card-text">
+                    <f:if condition="{isContentRegistered}">
+                        <f:then>
+                            <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentRegister.status.registered.description"/>
+                        </f:then>
+                        <f:else>
+                            <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentRegister.status.notRegistered.description"/>
+                        </f:else>
+                    </f:if>
+                </p>
+            </div>
+            <div class="card-footer">
+                <f:if condition="{isContentRegistered}">
+                    <f:then>
+                        <form method="post">
+                            <input type="hidden" name="unregisterContent" value="1"/>
+                            <button type="submit" class="btn btn-default">
+                                <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentRegister.button.unregister"/>
+                            </button>
+                        </form>
+                    </f:then>
+                    <f:else>
+                        <form method="post">
+                            <input type="hidden" name="registerContent" value="1"/>
+                            <button type="submit" class="btn btn-default">
+                                <f:translate key="LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:module.dynamicContentRegister.button.register"/>
+                            </button>
+                        </form>
+                    </f:else>
+                </f:if>
+            </div>
+        </div>
+    </div>
+</f:section>
+</html>

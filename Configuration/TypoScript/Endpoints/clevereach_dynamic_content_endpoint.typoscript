@@ -1,0 +1,21 @@
+cleverreach_getDynamicContent = PAGE
+cleverreach_getDynamicContent {
+  typeNum = 1705405176
+
+  config {
+    no_cache = 1
+    disableAllHeaderCode = 1
+    admPanel = 0
+    removeDefaultJS = 1
+    removeDefaultCss = 1
+    removePageCss = 1
+    additionalHeaders {
+      10.header = Content-Type: text/html
+      10.httpResponseCode = 200
+      10.replace = 1
+    }
+  }
+
+  10 = USER
+  10.userFunc =  Rozumbunch\Bridge2Cleverreach\Controller\CleverreachController->getDynamicContent
+}

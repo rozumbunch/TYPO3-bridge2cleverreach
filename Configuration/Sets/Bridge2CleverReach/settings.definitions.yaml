@@ -9,3 +9,27 @@ settings:
     category: cleverreach
     label: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.includeCss.label'
     description: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.includeCss.description'
+  bridge2cleverreach.allowedCTypesForDynamicContents:
+    type: string
+    default: ''
+    category: cleverreach
+    label: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.allowedCTypesForDynamicContents.label'
+    description: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.allowedCTypesForDynamicContents.description'
+  bridge2cleverreach.dynamicContentsCustom:
+    type: bool
+    default: false
+    category: cleverreach
+    label: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.dynamicContentsCustom.label'
+    description: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.dynamicContentsCustom.description'
+  bridge2cleverreach.dynamicContentsAsNews:
+    type: bool
+    default: false
+    category: cleverreach
+    label: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.dynamicContentsAsNews.label'
+    description: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.dynamicContentsAsNews.description'
+  bridge2cleverreach.dynamicContentsNewsDetailPid:
+    type: page
+    default: 0
+    category: cleverreach
+    label: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.dynamicContentsNewsDetailPid.label'
+    description: 'LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_be.xlf:settings.dynamicContentsNewsDetailPid.description'

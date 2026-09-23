@@ -14,3 +14,4 @@ API credentials and recipient lists remain in the **Site Configuration** (tab *C
 3. Flexible Group Management
 4. Content elements
 5. Headless API
+6. Dynamic Content (My Content for CleverReach)

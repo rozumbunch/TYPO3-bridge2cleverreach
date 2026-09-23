@@ -63,6 +63,165 @@
             <trans-unit id="settings.includeCss.description">
                 <source>Include EXT:bridge2cleverreach/Resources/Public/Css/newsletter.css via page.includeCSS.bridge2cleverreach. Disable this if the site provides its own styles.</source>
             </trans-unit>
+            <trans-unit id="settings.allowedCTypesForDynamicContents.label">
+                <source>Allowed content types for dynamic contents</source>
+            </trans-unit>
+            <trans-unit id="settings.allowedCTypesForDynamicContents.description">
+                <source>Allowed content types for dynamic contents. Comma separated list of content type keys.</source>
+            </trans-unit>
+            <trans-unit id="settings.dynamicContentsAsNews.label">
+                <source>Include dynamic content as news</source>
+            </trans-unit>
+            <trans-unit id="settings.dynamicContentsAsNews.description">
+                <source>Include dynamic content as news. Disable this if the site provides its own news view.</source>
+            </trans-unit>
+            <trans-unit id="settings.dynamicContentsCustom.label">
+                <source>Include custom dynamic content</source>
+            </trans-unit>
+            <trans-unit id="settings.dynamicContentsCustom.description">
+                <source>Enables the Custom content module, for example for further APIs.</source>
+            </trans-unit>
+            <trans-unit id="settings.dynamicContentsNewsDetailPid.label">
+                <source>News Detailpage</source>
+            </trans-unit>
+            <trans-unit id="settings.dynamicContentsNewsDetailPid.description">
+                <source>PID of the news detail page for build ulr for dynamic contents news.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContent.title">
+                <source>CleverReach</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContent.shortDescription">
+                <source>Dynamic content</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContent.description">
+                <source>Register dynamic content with CleverReach and choose which news, content elements and custom blocks are available in newsletters.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentRegister.title">
+                <source>Registration</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentRegister.shortDescription">
+                <source>Endpoint</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentRegister.description">
+                <source>Register or remove the dynamic content endpoint in CleverReach.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentRegister.status.registered">
+                <source>Registered</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentRegister.status.registered.description">
+                <source>The dynamic content endpoint is registered at CleverReach.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentRegister.status.notRegistered">
+                <source>Not registered</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentRegister.status.notRegistered.description">
+                <source>The dynamic content endpoint is not registered at CleverReach.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentRegister.button.register">
+                <source>Register dynamic content</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentRegister.button.unregister">
+                <source>Remove registration</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentRegister.error.authorization">
+                <source>CleverReach authorization failed.</source>
+            </trans-unit>
+            <trans-unit id="module.selectSite.title">
+                <source>Select a website</source>
+            </trans-unit>
+            <trans-unit id="module.selectSite.message">
+                <source>Select a page of the website in the page tree. The site is then used automatically.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.title">
+                <source>Content elements</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.shortDescription">
+                <source>Page content</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.description">
+                <source>Select individual pages of this website whose content elements are transferred to the newsletter. Only allowed elements are stored.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.heading">
+                <source>Select content elements for the newsletter</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.pages">
+                <source>Content elements from a specific page</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.pages.description">
+                <source>Select individual pages of this website whose content elements are transferred to the newsletter. Only allowed elements are stored.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.wizard">
+                <source>Select content element</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.wizard.description">
+                <source>Open a page in the wizard and choose a content element. It is stored only when it lies on one of the selected pages and its type is allowed.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.browse">
+                <source>Browse for page</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.removePage">
+                <source>Remove selected page</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.selected">
+                <source>Individual content elements</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.selected.description">
+                <source>Select individual content elements that are transferred to the newsletter. Only allowed elements are stored.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.notAllowed.title">
+                <source>Not allowed</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.notAllowed.message">
+                <source>This element is not allowed.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.available">
+                <source>Available content elements</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.search">
+                <source>Search…</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.add">
+                <source>Add</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentElements.remove">
+                <source>Remove</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentCustom.title">
+                <source>Custom content</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentCustom.shortDescription">
+                <source>Custom blocks</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentCustom.description">
+                <source>Select custom dynamic content for the newsletter, for example further APIs.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentNews.title">
+                <source>News</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentNews.shortDescription">
+                <source>News for the newsletter</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentNews.description">
+                <source>Select news records that are used as dynamic content in the newsletter.</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentNews.selected">
+                <source>Selected news</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentNews.available">
+                <source>Available news</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentNews.search">
+                <source>Search…</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentNews.add">
+                <source>Add</source>
+            </trans-unit>
+            <trans-unit id="module.dynamicContentNews.remove">
+                <source>Remove</source>
+            </trans-unit>
+            <trans-unit id="module.disabledBySetting">
+                <source>Disabled in the site settings</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

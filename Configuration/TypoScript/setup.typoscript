@@ -23,13 +23,43 @@ plugin.tx_bridge2cleverreach_unsubscribeform {
 ##########################
 #### CSS ####
 ##########################
-
+[{$bridge2cleverreach.includeCss}]
 page.includeCSS {
     bridge2cleverreach = EXT:bridge2cleverreach/Resources/Public/Css/newsletter.css
     bridge2cleverreach.media = all
 }
+[end]
+
+plugin.tx_bridge2cleverreach {
+  dynamicContents {
+    0 {
+      type = content-elements
+      dataProcessor = Rozumbunch\Bridge2Cleverreach\DataProcessing\ContentElementsDynamicContentDataProcessor->getItems
+      allowedCTypes = {$bridge2cleverreach.allowedCTypesForDynamicContents}
+    }
+  }
+}
+
+[{$bridge2cleverreach.dynamicContentsAsNews}]
+plugin.tx_bridge2cleverreach {
+  dynamicContents {
+    1 {
+      type = news
+      dataProcessor = Rozumbunch\Bridge2Cleverreach\DataProcessing\NewsDynamicContentDataProcessor->getItems
+      detailPid = {$bridge2cleverreach.dynamicContentsNewsDetailPid}
+    }
+  }
+}
+[end]
+
 
 ##########################
 #### CONTENT ELEMENTS ####
 ##########################
 @import 'EXT:bridge2cleverreach/Configuration/TypoScript/ContentElements/'
+
+##########################
+#### ENDPOINTS ###########
+##########################
+@import 'EXT:bridge2cleverreach/Configuration/TypoScript/Endpoints/'
+

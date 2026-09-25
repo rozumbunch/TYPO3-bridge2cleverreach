@@ -7,10 +7,10 @@ $EM_CONF[$_EXTKEY] = [
     'author' => 'Rozumbunch',
     'author_email' => 'contact@rozumbunch.de',
     'state' => 'stable',
-    'version' => '0.2.1',
+    'version' => '0.2.2',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.4.0-14.3.99',
+            'typo3' => '12.4.0-12.4.99',
         ],
     ],
     'autoload' => [

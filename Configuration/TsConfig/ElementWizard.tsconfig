@@ -1,0 +1,31 @@
+rozumbunch.elements.wizardTemplate.subscribeform {
+  iconIdentifier = bridge2cleverreach-subscribeform
+  title = LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:tx_bridge2cleverreach_subscribeform.name
+  description = LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:tx_bridge2cleverreach_subscribeform.description
+  tt_content_defValues {
+    CType = subscribeform
+  }
+}
+
+rozumbunch.elements.wizardTemplate.unsubscribeform {
+  iconIdentifier = bridge2cleverreach-unsubscribeform
+  title = LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:tx_bridge2cleverreach_unsubscribeform.name
+  description = LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:tx_bridge2cleverreach_unsubscribeform.description
+  tt_content_defValues {
+    CType = unsubscribeform
+  }
+}
+
+####################################
+# Newsletter                       #
+####################################
+mod.wizards.newContentElement.wizardItems {
+  newsletter.header = LLL:EXT:bridge2cleverreach/Resources/Private/Language/locallang_db.xlf:tt_content.CType.div.newsletter
+  newsletter.elements {
+    subscribeform < rozumbunch.elements.wizardTemplate.subscribeform
+    unsubscribeform < rozumbunch.elements.wizardTemplate.unsubscribeform
+  }
+
+  newsletter.show := addToList(subscribeform)
+  newsletter.show := addToList(unsubscribeform)
+}

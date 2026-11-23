@@ -11,6 +11,10 @@
 				<source>Configuration Error</source>
 				<target>Konfiguration Fehler</target>
 			</trans-unit>
+			<trans-unit id="error.subscribeGeneric">
+				<source>Your subscription could not be processed. Please try again later.</source>
+				<target>Ihre Anmeldung konnte gerade nicht verarbeitet werden. Bitte versuchen Sie es später erneut.</target>
+			</trans-unit>
 			<trans-unit id="error.authorization">
 				<source>Authorization error, check your authorization data</source>
 				<target>Autorisierungsfehler, überprüfen Sie Ihre Autorisierungsdaten</target>

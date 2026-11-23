@@ -3,6 +3,8 @@
 namespace Rozumbunch\Bridge2Cleverreach\Controller;
 
 use Psr\Http\Message\ResponseInterface;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
 use Rozumbunch\Bridge2Cleverreach\Api\ApiManager;
 use Rozumbunch\Bridge2Cleverreach\Utility\CleverReachGroupMapper;
 use TYPO3\CMS\Core\Site\Entity\Site;
@@ -14,8 +16,10 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 /**
  * Cleverreach Controller.
  */
-class CleverreachController extends ActionController
+class CleverreachController extends ActionController implements LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
     /** @var ApiManager */
     private $apiManager;
 
@@ -289,8 +293,18 @@ class CleverreachController extends ActionController
                 $token
             );
             if ($subscribeResult['error']) {
-                $errors[] = $this->formatGroupError($groupKey, $group, $subscribeResult['message'] ?? '');
-                continue;
+                // The address may already be in the group (e.g. an unconfirmed earlier
+                // sign-up or an imported recipient). Active recipients get the regular
+                // success message without another mail, inactive ones a new DOI mail.
+                $existing = $this->findSubscriber($email, (int)$group['groupId'], $token);
+                if ($existing === null) {
+                    $errors[] = $this->formatGroupError($groupKey, $group, $subscribeResult['message'] ?? '');
+                    continue;
+                }
+                if ((bool)($existing['active'] ?? false)) {
+                    $successCount++;
+                    continue;
+                }
             }
 
             $doiResult = $this->apiManager->triggerDoubleOptInEmail(
@@ -307,21 +321,21 @@ class CleverreachController extends ActionController
             $successCount++;
         }
 
-        if ($successCount === 0) {
-            $message = LocalizationUtility::translate('api.error.subscriptionFailed', 'bridge2cleverreach') ?? 'Subscription failed: %s';
-
-            return [
-                'success' => false,
-                'message' => sprintf($message, implode(', ', $errors)),
-            ];
+        if ($errors !== []) {
+            // Technical details (API messages) go to the log only; visitors get a
+            // neutral message that does not reveal whether an address is subscribed.
+            $this->logger?->error('CleverReach subscription failed', [
+                'groups' => array_keys($groups),
+                'successCount' => $successCount,
+                'errors' => $errors,
+            ]);
         }
 
-        if ($errors !== []) {
-            $message = LocalizationUtility::translate('api.success.subscriptionPartial', 'bridge2cleverreach') ?? 'Subscription partially successful (%d of %d groups). Errors: %s';
-
+        if ($successCount === 0) {
             return [
-                'success' => true,
-                'message' => sprintf($message, $successCount, count($groups), implode(', ', $errors)),
+                'success' => false,
+                'message' => LocalizationUtility::translate('error.subscribeGeneric', 'bridge2cleverreach')
+                    ?? 'Your subscription could not be processed. Please try again later.',
             ];
         }
 
@@ -365,6 +379,22 @@ class CleverreachController extends ActionController
     /**
      * @param array{label: string, groupId: int, formId: string} $group
      */
+    /**
+     * Returns the recipient of a group as array, or null if it does not exist
+     * or the lookup fails.
+     */
+    private function findSubscriber(string $email, int $groupId, string $token): ?array
+    {
+        try {
+            $response = $this->apiManager->getSubscriber($email, $token, $groupId);
+            $data = json_decode((string)$response->getBody(), true);
+        } catch (\Throwable $e) {
+            return null;
+        }
+
+        return is_array($data) && isset($data['email']) ? $data : null;
+    }
+
     private function formatGroupError(string $groupKey, array $group, string $errorMessage): string
     {
         $label = $group['label'] !== '' ? $group['label'] : $groupKey;

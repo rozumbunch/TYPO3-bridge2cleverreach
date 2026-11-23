@@ -11,6 +11,10 @@
 				<source>Configuration Error</source>
 				<target>Konfiguration Fehler</target>
 			</trans-unit>
+			<trans-unit id="error.privacyConsent">
+				<source>Please confirm the privacy notice.</source>
+				<target>Bitte bestätigen Sie den Datenschutzhinweis.</target>
+			</trans-unit>
 			<trans-unit id="error.authorization">
 				<source>Authorization error, check your authorization data</source>
 				<target>Autorisierungsfehler, überprüfen Sie Ihre Autorisierungsdaten</target>

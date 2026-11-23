@@ -1,4 +1,13 @@
 plugin.tx_bridge2cleverreach_subscribeform {
+  settings {
+    # Optional group attribute that stores the privacy consent, e.g. name = datenschutz,
+    # value = akzeptiert. If a name is set, the form must send "newsletter-form-privacy"
+    # and the consent is checked on the server.
+    privacyCheckbox.attribute {
+      name =
+      value = 1
+    }
+  }
   view {
     templateRootPaths.0 = EXT:bridge2cleverreach/Resources/Private/Templates/
     templateRootPaths.1 = {$plugin.tx_bridge2cleverreach_subscribeform.view.templateRootPath}

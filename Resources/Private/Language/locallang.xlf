@@ -9,6 +9,9 @@
 			<trans-unit id="error.configuration">
 				<source>Configuration Error</source>
 			</trans-unit>
+			<trans-unit id="error.turnstileMissing">
+				<source>Spam protection is enabled, but EXT:turnstile is not installed.</source>
+			</trans-unit>
 			<trans-unit id="error.authorization">
 				<source>Authorization error, check your authorization data</source>
 			</trans-unit>

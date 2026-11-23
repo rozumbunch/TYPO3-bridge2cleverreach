@@ -63,6 +63,14 @@
                 <source>If enabled, a privacy checkbox will be displayed in the frontend form</source>
                 <target>Wenn aktiviert, wird im Frontend-Formular eine Datenschutz-Checkbox angezeigt</target>
             </trans-unit>
+            <trans-unit id="flexform.turnstileEnable.label">
+                <source>Enable spam protection (Cloudflare Turnstile)</source>
+                <target>Spamschutz aktivieren (Cloudflare Turnstile)</target>
+            </trans-unit>
+            <trans-unit id="flexform.turnstileEnable.description">
+                <source>Requires EXT:turnstile (tritum/turnstile) with configured site and private key. The form is only submitted to CleverReach after a successful Turnstile check.</source>
+                <target>Setzt EXT:turnstile (tritum/turnstile) mit eingetragenem Site- und Private-Key voraus. Die Anmeldung wird erst nach erfolgreicher Turnstile-Prüfung an CleverReach übergeben.</target>
+            </trans-unit>
             <trans-unit id="flexform.privacyCheckboxLinkToPrivacyPolicyPid.label">
                 <source>Privacy policy page</source>
                 <target>Datenschutz-Seite</target>

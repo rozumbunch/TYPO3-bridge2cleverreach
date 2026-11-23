@@ -48,6 +48,12 @@
             <trans-unit id="flexform.showPrivacyCheckbox.description">
                 <source>If enabled, a privacy checkbox will be displayed in the frontend form</source>
             </trans-unit>
+            <trans-unit id="flexform.turnstileEnable.label">
+                <source>Enable spam protection (Cloudflare Turnstile)</source>
+            </trans-unit>
+            <trans-unit id="flexform.turnstileEnable.description">
+                <source>Requires EXT:turnstile (tritum/turnstile) with configured site and private key. The form is only submitted to CleverReach after a successful Turnstile check.</source>
+            </trans-unit>
             <trans-unit id="flexform.privacyCheckboxLinkToPrivacyPolicyPid.label">
                 <source>Privacy policy page</source>
             </trans-unit>

@@ -14,6 +14,9 @@
   "require": {
     "typo3/cms-core": "^12.4"
   },
+  "suggest": {
+    "tritum/turnstile": "Cloudflare Turnstile spam protection for the subscribe form (FlexForm option)"
+  },
   "autoload": {
     "psr-4": {
       "Rozumbunch\\Bridge2Cleverreach\\": "Classes/"

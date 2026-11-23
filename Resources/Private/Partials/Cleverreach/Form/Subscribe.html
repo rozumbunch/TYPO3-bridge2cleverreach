@@ -45,5 +45,9 @@
         </div>
     </f:if>
 
+    <f:if condition="{settings.turnstile.enable}">
+        <f:render partial="Cleverreach/Form/Turnstile" arguments="{settings: settings}" />
+    </f:if>
+
     <f:form.button class="btn btn--main"><f:translate key="form.button.submit" extensionName="bridge2cleverreach" /></f:form.button>
 </f:form>

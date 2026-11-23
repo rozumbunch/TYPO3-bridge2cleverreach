@@ -11,6 +11,10 @@
 				<source>Configuration Error</source>
 				<target>Konfiguration Fehler</target>
 			</trans-unit>
+			<trans-unit id="error.turnstileMissing">
+				<source>Spam protection is enabled, but EXT:turnstile is not installed.</source>
+				<target>Der Spamschutz ist aktiviert, aber EXT:turnstile ist nicht installiert.</target>
+			</trans-unit>
 			<trans-unit id="error.authorization">
 				<source>Authorization error, check your authorization data</source>
 				<target>Autorisierungsfehler, überprüfen Sie Ihre Autorisierungsdaten</target>

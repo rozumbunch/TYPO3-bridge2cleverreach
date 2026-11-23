@@ -9,6 +9,7 @@ use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Extbase\Validation\ValidatorResolver;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
@@ -42,8 +43,11 @@ class CleverreachController extends ActionController
             $surname = $requestData['newsletter-form-surname'] ?? '';
             $email = $requestData['newsletter-form-email'] ?? '';
             $groups = $this->resolveTargetGroups($selectableGroups, (string)($requestData['newsletter-group'] ?? ''));
+            $turnstileError = $this->getTurnstileError();
 
-            if (empty($email)) {
+            if ($turnstileError !== null) {
+                $response = ['success' => false, 'message' => $turnstileError];
+            } elseif (empty($email)) {
                 $response = ['success' => false, 'message' => LocalizationUtility::translate('error.noData', 'bridge2cleverreach')];
             } elseif (empty($siteCredentials['clientId']) || empty($siteCredentials['clientSecret']) || $groups === []) {
                 $response = ['success' => false, 'message' => LocalizationUtility::translate('error.configuration', 'bridge2cleverreach')];
@@ -67,6 +71,42 @@ class CleverreachController extends ActionController
         $this->view->assign('data', $this->getContentElementData());
         $this->view->assign('newsletterGroupOptions', array_map(static fn(array $group): string => $group['label'], $selectableGroups));
         return $this->htmlResponse();
+    }
+
+    /**
+     * Validates the Cloudflare Turnstile token when spam protection is enabled
+     * for this content element (FlexForm "settings.turnstile.enable").
+     *
+     * Uses the validator of EXT:turnstile (tritum/turnstile), which reads the
+     * "cf-turnstile-response" field from the request body. If the protection is
+     * enabled but EXT:turnstile is not installed, the request is rejected.
+     *
+     * @return string|null Error message, or null if the request may proceed
+     */
+    protected function getTurnstileError(): ?string
+    {
+        if (!(bool)($this->settings['turnstile']['enable'] ?? false)) {
+            return null;
+        }
+
+        $validatorClass = 'TRITUM\\Turnstile\\Validation\\TurnstileValidator';
+        $validator = class_exists($validatorClass)
+            ? GeneralUtility::makeInstance(ValidatorResolver::class)->createValidator($validatorClass)
+            : null;
+        if ($validator === null) {
+            return LocalizationUtility::translate('error.turnstileMissing', 'bridge2cleverreach')
+                ?? 'Spam protection is enabled, but EXT:turnstile is not installed.';
+        }
+        if (method_exists($validator, 'setRequest')) {
+            $validator->setRequest($this->request);
+        }
+
+        $result = $validator->validate(1);
+        if (!$result->hasErrors()) {
+            return null;
+        }
+
+        return $result->getFirstError()->getMessage();
     }
 
     /**

@@ -1,0 +1,12 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:turnstile="http://typo3.org/ns/TRITUM/Turnstile/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:comment>
+    Rendered only when "settings.turnstile.enable" is set, so the ViewHelper of
+    EXT:turnstile is not required otherwise. The widget posts its token as
+    "cf-turnstile-response", which CleverreachController::getTurnstileError() verifies.
+</f:comment>
+<div class="newsletter-form__turnstile">
+    <turnstile:forms.turnstile />
+</div>
+</html>
